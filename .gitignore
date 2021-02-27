@@ -1,2 +1,3 @@
-
-Style/.swiftpm/xcode/xcuserdata/*
+.DS_Store
+/.build
+xcuserdata/

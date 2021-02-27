@@ -18,6 +18,7 @@
 		494ACED925EA869A00D31172 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494ACED825EA869A00D31172 /* HomeViewModel.swift */; };
 		494ACEE125EA877900D31172 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494ACEE025EA877900D31172 /* HomeInteractor.swift */; };
 		494ACEE625EA885400D31172 /* HomeViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494ACEE525EA885400D31172 /* HomeViewModelBuilder.swift */; };
+		499D590525EA94AA0005D3AF /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 499D590425EA94AA0005D3AF /* Network */; };
 		49DFE74B25EA5F6200DA495C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74A25EA5F6200DA495C /* AppDelegate.swift */; };
 		49DFE74D25EA5F6200DA495C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74C25EA5F6200DA495C /* SceneDelegate.swift */; };
 		49DFE74F25EA5F6200DA495C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74E25EA5F6200DA495C /* HomeViewController.swift */; };
@@ -76,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4949A89D25EA640100895A08 /* Style in Frameworks */,
+				499D590525EA94AA0005D3AF /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +257,7 @@
 			name = "SpaceX Tracker";
 			packageProductDependencies = (
 				4949A89C25EA640100895A08 /* Style */,
+				499D590425EA94AA0005D3AF /* Network */,
 			);
 			productName = "SpaceX Tracker";
 			productReference = 49DFE74725EA5F6200DA495C /* SpaceX Tracker.app */;
@@ -711,6 +714,10 @@
 		4949A89C25EA640100895A08 /* Style */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Style;
+		};
+		499D590425EA94AA0005D3AF /* Network */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Network;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

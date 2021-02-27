@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Network">
+   </FileRef>
+   <FileRef
       location = "group:Style">
    </FileRef>
    <FileRef
