@@ -37,10 +37,11 @@ final class CompanyInfoCell: UITableViewCell {
     private func layoutComponents() {
         NSLayoutConstraint.activate(
             [
-                label.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-                label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-                label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-                label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+                label.topAnchor.constraint(equalTo: topAnchor, constant: .style(.m)),
+                label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.style(.m)),
+                label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .style(.m)),
+                label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.style(.m)),
+                label.heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
             ]
         )
     }
