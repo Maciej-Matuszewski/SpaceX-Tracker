@@ -8,7 +8,6 @@
 import Foundation
 
 struct CompanyInfoModel: Codable {
-    let id: String
     let name: String
     let founder: String
     let founded: Int

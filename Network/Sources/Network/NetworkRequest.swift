@@ -15,7 +15,7 @@ public protocol NetworkRequest {
 
 extension NetworkRequest {
     var url: URL? {
-        URL.init(string: "https://api.spacexdata.com/v4")
+        URL.init(string: "https://api.spacexdata.com/v3")
     }
 
     var urlRequest: URLRequest? {

@@ -27,6 +27,7 @@ public final class NetworkClient {
         return session
     }()
 
+    @available(iOS 10.0, *)
     @discardableResult
     public func send<T: Codable>(request: NetworkRequest, completion: @escaping (Result<T, Error>) -> Void) -> URLSessionDataTask? {
         guard let request = request.urlRequest else {
@@ -41,6 +42,7 @@ public final class NetworkClient {
             }
 
             let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
             guard
