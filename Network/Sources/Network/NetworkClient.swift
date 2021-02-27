@@ -7,7 +7,13 @@
 
 import Foundation
 
-public final class NetworkClient {
+public protocol NetworkClientProtocol {
+    @available(iOS 10.0, *)
+    @discardableResult
+    func send<T: Codable>(request: NetworkRequest, completion: @escaping (Result<T, Error>) -> Void) -> URLSessionDataTask?
+}
+
+public final class NetworkClient: NetworkClientProtocol {
     public init() {}
 
     public enum NetworkError: Error {

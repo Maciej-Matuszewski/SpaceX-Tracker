@@ -92,7 +92,7 @@ final class LaunchCell: UITableViewCell {
         statusImageView.setContentHuggingPriority(.required, for: .horizontal)
     }
 
-    public func configure(with viewModel: LaunchCellViewModel, imageDownloader: ImageDownloader) {
+    public func configure(with viewModel: LaunchCellViewModel, imageDownloader: ImageDownloaderProtocol) {
         missionImageView.image = UIImage(systemName: "photo")
 
         currentImageFetchTask = imageDownloader.image(from: viewModel.missionImageURL) { [weak self] (image) in

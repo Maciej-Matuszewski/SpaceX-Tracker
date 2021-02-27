@@ -10,8 +10,10 @@ import Style
 import SafariServices
 
 class HomeViewController: UIViewController {
+    typealias Context = ImageDownloaderProvider
+
+    private let context: Context
     private let interactor: HomeInteractor
-    private let imageDownloader = ImageDownloader()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -29,8 +31,9 @@ class HomeViewController: UIViewController {
         return tableView
     }()
 
-    init(interactor: HomeInteractor) {
+    init(interactor: HomeInteractor, context: Context) {
         self.interactor = interactor
+        self.context = context
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -83,7 +86,7 @@ extension HomeViewController: UITableViewDataSource {
 
         switch item {
         case .companyInfo(let viewModel): (cell as? CompanyInfoCell)?.configure(with: viewModel)
-        case .launch(let viewModel):  (cell as? LaunchCell)?.configure(with: viewModel, imageDownloader: imageDownloader)
+        case .launch(let viewModel):  (cell as? LaunchCell)?.configure(with: viewModel, imageDownloader: context.imageDownloader)
         }
 
         return cell

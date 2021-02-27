@@ -15,6 +15,10 @@ protocol HomeInteractorDelegate: class {
 }
 
 final class HomeInteractor {
+    typealias Context = NetworkClientProvider
+
+    private let context: Context
+
     struct State {
         var companyInfoModel: CompanyInfoModel?
         var launchModels: [LaunchModel]
@@ -22,18 +26,8 @@ final class HomeInteractor {
         var isFetching: Bool = false
         var hasNextPage: Bool = true
 
-        mutating func update(companyInfoModel: CompanyInfoModel?) {
-            self.companyInfoModel = companyInfoModel
-        }
-
-        mutating func update(launchModels: [LaunchModel], hasNextPage: Bool) {
-            self.launchModels = launchModels
-            self.currentPage = 0
-            self.hasNextPage = hasNextPage
-            self.isFetching = false
-        }
-
-        mutating func append(launchModels: [LaunchModel], page: Int, hasNextPage: Bool) {
+        mutating func update(launchModels: [LaunchModel], page: Int, hasNextPage: Bool) {
+            if page == 0 { self.launchModels.removeAll()  }
             self.launchModels.append(contentsOf: launchModels)
             self.currentPage = page
             self.hasNextPage = hasNextPage
@@ -55,7 +49,9 @@ final class HomeInteractor {
 
     weak var delegate: HomeInteractorDelegate?
 
-    private var networkClient = NetworkClient()
+    init(context: Context) {
+        self.context = context
+    }
 
     func fetchData() {
         fetchCompanyInfo()
@@ -67,11 +63,11 @@ final class HomeInteractor {
     }
 
     private func fetchCompanyInfo() {
-        networkClient.send(request: CompanyInfoRequest()) { [weak self] (result: Result<CompanyInfoModel, Error>) in
+        context.networkClient.send(request: CompanyInfoRequest()) { [weak self] (result: Result<CompanyInfoModel, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let model):
-                self.state.update(companyInfoModel: model)
+                self.state.companyInfoModel = model
             case .failure(let error):
                 self.delegate?.interactor(self, wantsToShowError: error)
             }
@@ -81,16 +77,11 @@ final class HomeInteractor {
     private func fetchLaunches(page: Int) {
         guard !state.isFetching, state.hasNextPage else { return }
         state.isFetching = true
-        print("Fetch for page: \(page)")
-        networkClient.send(request: LaunchesRequest(page: page)) { [weak self] (result: Result<[LaunchModel], Error>) in
+        context.networkClient.send(request: LaunchesRequest(page: page)) { [weak self] (result: Result<[LaunchModel], Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let models):
-                if page == 0 {
-                    self.state.update(launchModels: models, hasNextPage: !models.isEmpty)
-                } else {
-                    self.state.append(launchModels: models, page: page, hasNextPage: !models.isEmpty)
-                }
+                self.state.update(launchModels: models, page: page, hasNextPage: !models.isEmpty)
             case .failure(let error):
                 self.delegate?.interactor(self, wantsToShowError: error)
             }

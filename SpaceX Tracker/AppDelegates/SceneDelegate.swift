@@ -9,11 +9,16 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    var appContext = AppContext()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UINavigationController(rootViewController: HomeViewController(interactor: .init()))
+
+        let homeInteractor = HomeInteractor(context: appContext)
+        let homeViewController = HomeViewController(interactor: homeInteractor, context: appContext)
+
+        window.rootViewController = UINavigationController(rootViewController: homeViewController)
         self.window = window
         window.makeKeyAndVisible()
     }

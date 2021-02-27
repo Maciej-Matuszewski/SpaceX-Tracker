@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-class ImageDownloader {
+protocol ImageDownloaderProtocol {
+    func image(from urlString: String, completion:@escaping (_ image: UIImage?) -> Void) -> URLSessionTask?
+}
+
+final class ImageDownloader: ImageDownloaderProtocol {
     private var cache = NSCache<AnyObject, AnyObject>()
     private let queue = DispatchQueue(label: "image_download", qos: .default, attributes: .concurrent, autoreleaseFrequency: .never, target: .none)
 
