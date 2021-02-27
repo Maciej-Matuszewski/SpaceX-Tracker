@@ -83,6 +83,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4949A8A125EA6A6600895A08 /* AppDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				49DFE74A25EA5F6200DA495C /* AppDelegate.swift */,
+				49DFE74C25EA5F6200DA495C /* SceneDelegate.swift */,
+			);
+			path = AppDelegates;
+			sourceTree = "<group>";
+		};
+		4949A8A525EA6AA700895A08 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				49DFE75325EA5F6300DA495C /* Assets.xcassets */,
+				49DFE75525EA5F6300DA495C /* LaunchScreen.storyboard */,
+				49DFE75825EA5F6300DA495C /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		4949A8AC25EA6B7100895A08 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				4949A8AD25EA6B8000895A08 /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		4949A8AD25EA6B8000895A08 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				49DFE74E25EA5F6200DA495C /* ViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		49DFE73E25EA5F6200DA495C = {
 			isa = PBXGroup;
 			children = (
@@ -107,12 +142,9 @@
 		49DFE74925EA5F6200DA495C /* SpaceX Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				49DFE74A25EA5F6200DA495C /* AppDelegate.swift */,
-				49DFE74C25EA5F6200DA495C /* SceneDelegate.swift */,
-				49DFE74E25EA5F6200DA495C /* ViewController.swift */,
-				49DFE75325EA5F6300DA495C /* Assets.xcassets */,
-				49DFE75525EA5F6300DA495C /* LaunchScreen.storyboard */,
-				49DFE75825EA5F6300DA495C /* Info.plist */,
+				4949A8A125EA6A6600895A08 /* AppDelegates */,
+				4949A8AC25EA6B7100895A08 /* Modules */,
+				4949A8A525EA6AA700895A08 /* SupportingFiles */,
 			);
 			path = "SpaceX Tracker";
 			sourceTree = "<group>";
@@ -439,7 +471,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TLA9984P8M;
-				INFOPLIST_FILE = "SpaceX Tracker/Info.plist";
+				INFOPLIST_FILE = "SpaceX Tracker/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,7 +490,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TLA9984P8M;
-				INFOPLIST_FILE = "SpaceX Tracker/Info.plist";
+				INFOPLIST_FILE = "SpaceX Tracker/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
