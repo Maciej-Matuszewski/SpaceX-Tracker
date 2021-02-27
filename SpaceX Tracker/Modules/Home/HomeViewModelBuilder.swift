@@ -32,6 +32,19 @@ struct HomeViewModelBuilder {
             return .companyInfo(viewModel: .init(labelText: text))
         }()
 
+        let launchItems = state.launchModels.map { (model) -> HomeViewModel.Item in
+            .launch(
+                viewModel: LaunchCellViewModel(
+                    missionImageURL: model.links.missionPatchSmall ?? "",
+                    statusImage: model.upcoming ? .waiting : model.launchSuccess == true ? .success : .failed,
+                    missionLabelConfiguration: .mission(name: model.missionName),
+                    dateLabelConfiguration: .date(date: model.launchDateLocal),
+                    rocketLabelConfiguration: .rocket(name: model.rocket.rocketName, type: model.rocket.rocketType),
+                    daysSinceNowLabelConfiguration: .daysSinceNow(date: model.launchDateLocal)
+                )
+            )
+        }
+
         return .init(
             sections: [
                 HomeViewModel.Section(
@@ -41,8 +54,8 @@ struct HomeViewModelBuilder {
                 ),
                 HomeViewModel.Section(
                     headerTitle: "Launches",
-                    items: [],
-                    isLoading: true
+                    items: launchItems,
+                    isLoading: state.hasNextPage
                 ),
             ]
         )

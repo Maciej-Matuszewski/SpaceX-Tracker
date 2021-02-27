@@ -15,7 +15,7 @@ struct InfoLabelViewModelBuilder {
 
         case .date(let date):
             let dateFormater = DateFormatter()
-            dateFormater.dateStyle = .short
+            dateFormater.dateStyle = .medium
             dateFormater.timeStyle = .none
             let day = dateFormater.string(from: date)
 
