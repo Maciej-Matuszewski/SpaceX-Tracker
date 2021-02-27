@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4949A89D25EA640100895A08 /* Style in Frameworks */ = {isa = PBXBuildFile; productRef = 4949A89C25EA640100895A08 /* Style */; };
 		49DFE74B25EA5F6200DA495C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74A25EA5F6200DA495C /* AppDelegate.swift */; };
 		49DFE74D25EA5F6200DA495C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74C25EA5F6200DA495C /* SceneDelegate.swift */; };
 		49DFE74F25EA5F6200DA495C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74E25EA5F6200DA495C /* ViewController.swift */; };
@@ -54,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4949A89D25EA640100895A08 /* Style in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +76,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4949A89B25EA640100895A08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		49DFE73E25EA5F6200DA495C = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +90,7 @@
 				49DFE76025EA5F6300DA495C /* SpaceX TrackerTests */,
 				49DFE76B25EA5F6300DA495C /* SpaceX TrackerUITests */,
 				49DFE74825EA5F6200DA495C /* Products */,
+				4949A89B25EA640100895A08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +151,9 @@
 			dependencies = (
 			);
 			name = "SpaceX Tracker";
+			packageProductDependencies = (
+				4949A89C25EA640100895A08 /* Style */,
+			);
 			productName = "SpaceX Tracker";
 			productReference = 49DFE74725EA5F6200DA495C /* SpaceX Tracker.app */;
 			productType = "com.apple.product-type.application";
@@ -581,6 +594,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4949A89C25EA640100895A08 /* Style */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Style;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 49DFE73F25EA5F6200DA495C /* Project object */;
 }
