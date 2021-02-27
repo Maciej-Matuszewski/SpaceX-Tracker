@@ -40,7 +40,7 @@ private extension Colors {
 
         // MARK: Light Palette
         case (.primaryText, _, _): return UIColor(42, 42, 42)
-        case (.secondaryText, _, _): return UIColor(64, 64, 64)
+        case (.secondaryText, _, _): return UIColor(84, 84, 84)
         case (.accent, _, _): return UIColor(255, 53, 53)
 
         case (.primaryBackground, _, _): return UIColor(250, 250, 250)
