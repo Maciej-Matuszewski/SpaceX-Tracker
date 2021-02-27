@@ -9,6 +9,8 @@ import UIKit
 import Style
 
 final class LaunchCell: UITableViewCell {
+    private var currentImageFetchTask: URLSessionTask?
+
     private let rootStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,6 +24,7 @@ final class LaunchCell: UITableViewCell {
 
     private var missionImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -89,12 +92,30 @@ final class LaunchCell: UITableViewCell {
         statusImageView.setContentHuggingPriority(.required, for: .horizontal)
     }
 
-    public func configure(with viewModel: LaunchCellViewModel) {
+    public func configure(with viewModel: LaunchCellViewModel, imageDownloader: ImageDownloader) {
+        missionImageView.image = UIImage(systemName: "photo")
+
+        currentImageFetchTask = imageDownloader.image(from: viewModel.missionImageURL) { [weak self] (image) in
+            guard let image = image else { return }
+            self?.missionImageView.image = image
+        }
+
         statusImageView.image = viewModel.statusImage.image
         missionLabel.configure(with: viewModel.missionLabelConfiguration)
         dateLabel.configure(with: viewModel.dateLabelConfiguration)
         rocketLabel.configure(with: viewModel.rocketLabelConfiguration)
         daysSinceNowLabel.configure(with: viewModel.daysSinceNowLabelConfiguration)
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        currentImageFetchTask?.cancel()
+        missionImageView.image = nil
+        statusImageView.image = nil
+        missionLabel.prepareForReuse()
+        dateLabel.prepareForReuse()
+        rocketLabel.prepareForReuse()
+        daysSinceNowLabel.prepareForReuse()
     }
 }
 
