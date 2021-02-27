@@ -24,4 +24,27 @@ struct HomeViewModelBuilder {
             ]
         )
     }
+
+    static func build(with state: HomeInteractor.State) -> HomeViewModel {
+        let companyInfoItem: HomeViewModel.Item? = {
+            guard let model = state.companyInfoModel else { return nil }
+            let text = "\(model.name) was founded by \(model.founder) in \(model.founded). It has now \(model.employees) employees, \(model.launchSites) launch sites, and is valued at USD \(model.valuation)."
+            return .companyInfo(viewModel: .init(labelText: text))
+        }()
+
+        return .init(
+            sections: [
+                HomeViewModel.Section(
+                    headerTitle: "Company",
+                    items: [companyInfoItem].compactMap({ $0 }),
+                    isLoading: state.companyInfoModel == nil
+                ),
+                HomeViewModel.Section(
+                    headerTitle: "Launches",
+                    items: [],
+                    isLoading: true
+                ),
+            ]
+        )
+    }
 }

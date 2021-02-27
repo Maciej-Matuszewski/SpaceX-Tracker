@@ -18,7 +18,9 @@
 		494ACED925EA869A00D31172 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494ACED825EA869A00D31172 /* HomeViewModel.swift */; };
 		494ACEE125EA877900D31172 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494ACEE025EA877900D31172 /* HomeInteractor.swift */; };
 		494ACEE625EA885400D31172 /* HomeViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494ACEE525EA885400D31172 /* HomeViewModelBuilder.swift */; };
-		499D590525EA94AA0005D3AF /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 499D590425EA94AA0005D3AF /* Network */; };
+		4972C1A925EA9E4F00394DF1 /* CompanyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972C1A825EA9E4F00394DF1 /* CompanyInfoModel.swift */; };
+		4972C1AF25EA9E7C00394DF1 /* CompanyInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972C1AE25EA9E7C00394DF1 /* CompanyInfoRequest.swift */; };
+		499D590D25EA98150005D3AF /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 499D590C25EA98150005D3AF /* Network */; };
 		49DFE74B25EA5F6200DA495C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74A25EA5F6200DA495C /* AppDelegate.swift */; };
 		49DFE74D25EA5F6200DA495C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74C25EA5F6200DA495C /* SceneDelegate.swift */; };
 		49DFE74F25EA5F6200DA495C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74E25EA5F6200DA495C /* HomeViewController.swift */; };
@@ -56,6 +58,8 @@
 		494ACED825EA869A00D31172 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		494ACEE025EA877900D31172 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		494ACEE525EA885400D31172 /* HomeViewModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelBuilder.swift; sourceTree = "<group>"; };
+		4972C1A825EA9E4F00394DF1 /* CompanyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoModel.swift; sourceTree = "<group>"; };
+		4972C1AE25EA9E7C00394DF1 /* CompanyInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoRequest.swift; sourceTree = "<group>"; };
 		49DFE74725EA5F6200DA495C /* SpaceX Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceX Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49DFE74A25EA5F6200DA495C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49DFE74C25EA5F6200DA495C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,7 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4949A89D25EA640100895A08 /* Style in Frameworks */,
-				499D590525EA94AA0005D3AF /* Network in Frameworks */,
+				499D590D25EA98150005D3AF /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +193,22 @@
 			path = InfoLabel;
 			sourceTree = "<group>";
 		};
+		4972C1A725EA9E3C00394DF1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4972C1A825EA9E4F00394DF1 /* CompanyInfoModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4972C1AD25EA9E6900394DF1 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				4972C1AE25EA9E7C00394DF1 /* CompanyInfoRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
 		49DFE73E25EA5F6200DA495C = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +233,8 @@
 		49DFE74925EA5F6200DA495C /* SpaceX Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				4972C1AD25EA9E6900394DF1 /* Requests */,
+				4972C1A725EA9E3C00394DF1 /* Models */,
 				4949A8A125EA6A6600895A08 /* AppDelegates */,
 				494ACEBC25EA741300D31172 /* Common */,
 				4949A8AC25EA6B7100895A08 /* Modules */,
@@ -257,7 +279,7 @@
 			name = "SpaceX Tracker";
 			packageProductDependencies = (
 				4949A89C25EA640100895A08 /* Style */,
-				499D590425EA94AA0005D3AF /* Network */,
+				499D590C25EA98150005D3AF /* Network */,
 			);
 			productName = "SpaceX Tracker";
 			productReference = 49DFE74725EA5F6200DA495C /* SpaceX Tracker.app */;
@@ -383,8 +405,10 @@
 				49DFE74D25EA5F6200DA495C /* SceneDelegate.swift in Sources */,
 				494ACED125EA825400D31172 /* LaunchCellViewModel.swift in Sources */,
 				4949A8AF25EA6BD000895A08 /* CompanyInfoCell.swift in Sources */,
+				4972C1A925EA9E4F00394DF1 /* CompanyInfoModel.swift in Sources */,
 				494ACEC825EA81C900D31172 /* InfoLabelConfiguration.swift in Sources */,
 				494ACEE625EA885400D31172 /* HomeViewModelBuilder.swift in Sources */,
+				4972C1AF25EA9E7C00394DF1 /* CompanyInfoRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,7 +739,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Style;
 		};
-		499D590425EA94AA0005D3AF /* Network */ = {
+		499D590C25EA98150005D3AF /* Network */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Network;
 		};

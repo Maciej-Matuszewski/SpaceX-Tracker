@@ -20,7 +20,8 @@ final class CompanyInfoCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        backgroundColor = .style(.secondaryBackground)
+        
         addComponents()
         layoutComponents()
     }
@@ -40,8 +41,7 @@ final class CompanyInfoCell: UITableViewCell {
                 label.topAnchor.constraint(equalTo: topAnchor, constant: .style(.m)),
                 label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.style(.m)),
                 label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .style(.m)),
-                label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.style(.m)),
-                label.heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
+                label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.style(.m))
             ]
         )
     }

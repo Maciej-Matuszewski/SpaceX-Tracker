@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     private let interactor: HomeInteractor
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(
             CompanyInfoCell.self,
@@ -43,6 +43,8 @@ class HomeViewController: UIViewController {
 
         addComponents()
         layoutComponents()
+        interactor.delegate = self
+        interactor.fetchData()
     }
 
     private func addComponents() {
@@ -104,5 +106,11 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
+    }
+}
+
+extension HomeViewController: HomeInteractorDelegate {
+    func interactor(_ interactor: HomeInteractor, didUpdateViewModel viewModel: HomeViewModel) {
+        tableView.reloadData()
     }
 }
