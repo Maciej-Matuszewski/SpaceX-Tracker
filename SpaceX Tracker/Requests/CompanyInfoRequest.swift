@@ -9,7 +9,7 @@ import Foundation
 import Network
 
 struct CompanyInfoRequest: NetworkRequest {
-    var path: String = "company"
-    var method: NetworkClient.HTTPMethod = .GET
-    var parameters: [String : String] = [:]
+    let path: String = "info"
+    let method: NetworkClient.HTTPMethod = .GET
+    let parameters: [String : String] = [:]
 }

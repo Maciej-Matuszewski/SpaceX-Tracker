@@ -14,7 +14,7 @@ struct LaunchCellViewModel {
         case waiting
     }
 
-    let missionImageURL: URL
+    let missionImageURL: String
     let statusImage: StatusImage
     let missionLabelConfiguration: InfoLabelConfiguration
     let dateLabelConfiguration: InfoLabelConfiguration
