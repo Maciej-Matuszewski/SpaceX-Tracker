@@ -8,11 +8,12 @@
 import UIKit
 import Style
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(CompanyInfoCell.self, forCellReuseIdentifier: "Info")
+        tableView.register(LaunchCell.self, forCellReuseIdentifier: "Launch")
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -44,9 +45,9 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,10 +55,13 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "Section: \(indexPath.section), Row: \(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Launch", for: indexPath)
         return cell
     }
 }
 
-extension ViewController: UITableViewDelegate { }
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+}
