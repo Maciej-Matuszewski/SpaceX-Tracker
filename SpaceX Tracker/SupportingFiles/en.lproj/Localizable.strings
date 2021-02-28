@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  SpaceX Tracker
+
+  Created by Maciej Matuszewski on 27/02/2021.
+  
+*/
+
+"INFO_LABEL_TITLE_MISSION" = "Mission:";
+"INFO_LABEL_TITLE_DATE" = "Date/Time:";
+"INFO_LABEL_VALUE_DATE" = "%@ at %@";
+"INFO_LABEL_TITLE_ROCKET" = "Rocket:";
+"INFO_LABEL_TITLE_DAYS_SINCE" = "Days since now:";
+"INFO_LABEL_TITLE_DAYS_FROM" = "Days from now:";
+"INFO_LABEL_VALUE_DAY" = "Day";
+"INFO_LABEL_VALUE_DAYS" = "Days";
+
+"HOME_VIEW_CONTROLLER_TITLE" = "SpaceX";
+"HOME_VIEW_CONTROLLER_ERROR_ALERT_TITLE" = "Error";
+"HOME_VIEW_CONTROLLER_ERROR_ALERT_BUTTON_OK" = "Ok";
+"HOME_VIEW_CONTROLLER_ERROR_ALERT_BUTTON_RETRY" = "Retry";
+
+"HOME_VIEW_MODEL_BUILDER_HEADER_COMPANY" = "Company";
+"HOME_VIEW_MODEL_BUILDER_HEADER_LAUNCHES" = "Launches";
+"HOME_VIEW_MODEL_BUILDER_COMPANY_INFO" = "%@ was founded by %@ in %d. It has now %d employees, %d launch sites, and is valued at USD %.2f.";

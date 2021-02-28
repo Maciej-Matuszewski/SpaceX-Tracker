@@ -12,12 +12,12 @@ struct HomeViewModelBuilder {
         .init(
             sections: [
                 HomeViewModel.Section(
-                    headerTitle: "Company",
+                    headerTitle: Localized.HomeViewModelBuilder.Headers.company,
                     items: [],
                     isLoading: true
                 ),
                 HomeViewModel.Section(
-                    headerTitle: "Launches",
+                    headerTitle: Localized.HomeViewModelBuilder.Headers.launches,
                     items: [],
                     isLoading: true
                 ),
@@ -28,7 +28,14 @@ struct HomeViewModelBuilder {
     static func build(with state: HomeInteractor.State) -> HomeViewModel {
         let companyInfoItem: HomeViewModel.Item? = {
             guard let model = state.companyInfoModel else { return nil }
-            let text = "\(model.name) was founded by \(model.founder) in \(model.founded). It has now \(model.employees) employees, \(model.launchSites) launch sites, and is valued at USD \(model.valuation)."
+            let text = Localized.HomeViewModelBuilder.companyInfo(
+                companyName: model.name,
+                founderName: model.founder,
+                year: model.founded,
+                employees: model.employees,
+                launchSites: model.launchSites,
+                valuation: model.valuation
+            )
             return .companyInfo(viewModel: .init(labelText: text))
         }()
 
@@ -48,12 +55,12 @@ struct HomeViewModelBuilder {
         return .init(
             sections: [
                 HomeViewModel.Section(
-                    headerTitle: "Company",
+                    headerTitle: Localized.HomeViewModelBuilder.Headers.company,
                     items: [companyInfoItem].compactMap({ $0 }),
                     isLoading: state.companyInfoModel == nil
                 ),
                 HomeViewModel.Section(
-                    headerTitle: "Launches",
+                    headerTitle: Localized.HomeViewModelBuilder.Headers.launches,
                     items: launchItems,
                     isLoading: state.hasNextPage
                 ),

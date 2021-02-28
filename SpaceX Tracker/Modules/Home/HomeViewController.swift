@@ -50,7 +50,7 @@ class HomeViewController: UIViewController {
         layoutComponents()
         interactor.delegate = self
         interactor.fetchData()
-        title = "Space X"
+        title = Localized.HomeViewController.title
     }
 
     private func addComponents() {
@@ -132,8 +132,18 @@ extension HomeViewController: HomeInteractorDelegate {
     }
 
     func interactor(_ interactor: HomeInteractor, wantsToShowError error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        alertController.addAction(.init(title: "Ok", style: .cancel, handler: nil))
+        let alertController = UIAlertController(
+            title: Localized.HomeViewController.ErrorAlert.title,
+            message: error.localizedDescription,
+            preferredStyle: .alert
+        )
+        alertController.addAction(
+            .init(
+                title: Localized.HomeViewController.ErrorAlert.buttonOk,
+                style: .cancel,
+                handler: nil
+            )
+        )
         present(alertController, animated: true, completion: nil)
     }
 
