@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Style
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -21,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = UINavigationController(rootViewController: homeViewController)
         self.window = window
         window.makeKeyAndVisible()
+        window.tintColor = .style(.accent)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) { }

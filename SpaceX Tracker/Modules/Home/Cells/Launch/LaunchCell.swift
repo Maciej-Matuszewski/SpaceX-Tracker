@@ -26,12 +26,14 @@ final class LaunchCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .style(.accent)
         return imageView
     }()
 
     private var statusImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .style(.accent)
         return imageView
     }()
 

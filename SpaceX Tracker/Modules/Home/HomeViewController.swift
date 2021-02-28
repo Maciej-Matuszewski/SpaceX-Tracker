@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
 
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .style(.accent)
         refreshControl.addTarget(self, action: #selector(refreshControlDidChanged(_:)), for: .valueChanged)
         return refreshControl
     }()
