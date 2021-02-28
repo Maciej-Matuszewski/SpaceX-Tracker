@@ -93,4 +93,11 @@ struct Localized {
             static let unsuccessful = "FILTERS_STATUS_UNSUCESSFUL".localized()
         }
     }
+
+    struct Options {
+        static let article = "OPTIONS_ARTICLE".localized()
+        static let wikipedia = "OPTIONS_WIKIPEDIA".localized()
+        static let youtube = "OPTIONS_YOUTUBE".localized()
+        static let cancel = "OPTIONS_CANCEL".localized()
+    }
 }

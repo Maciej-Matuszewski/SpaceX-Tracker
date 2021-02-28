@@ -165,8 +165,8 @@ extension HomeViewController: HomeInteractorDelegate {
         present(filtersViewController, animated: true, completion: nil)
     }
 
-    func interactor(_ interactor: HomeInteractor, wantsToShowAlert alertBuilder: AlertBuilder) {
-        present(alertBuilder.make(), animated: true, completion: nil)
+    func interactor(_ interactor: HomeInteractor, wantsToShowOptionsViewController optionsViewController: OptionsAlertControler) {
+        present(optionsViewController, animated: true, completion: nil)
     }
 
     func interactor(_ interactor: HomeInteractor, wantsToShowWebsiteWithURL url: URL) {

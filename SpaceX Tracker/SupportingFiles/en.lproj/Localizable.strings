@@ -38,3 +38,8 @@
 "FILTERS_STATUS_ALL" = "All";
 "FILTERS_STATUS_SUCCESSFUL" = "Successful";
 "FILTERS_STATUS_UNSUCESSFUL" = "Unsuccessful";
+
+"OPTIONS_ARTICLE" = "Article";
+"OPTIONS_WIKIPEDIA" = "Wikipedia";
+"OPTIONS_YOUTUBE" = "YouTube";
+"OPTIONS_CANCEL" = "Cancel";

@@ -12,8 +12,8 @@ protocol HomeInteractorDelegate: class {
     func interactor(_ interactor: HomeInteractor, didUpdateViewModel viewModel: HomeViewModel)
     func interactor(_ interactor: HomeInteractor, wantsToShowError error: Error)
     func interactor(_ interactor: HomeInteractor, wantsToShowWebsiteWithURL url: URL)
-    func interactor(_ interactor: HomeInteractor, wantsToShowAlert alertBuilder: AlertBuilder)
     func interactor(_ interactor: HomeInteractor, wantsToShowFiltersViewController filtersViewController: FiltersViewController)
+    func interactor(_ interactor: HomeInteractor, wantsToShowOptionsViewController optionsViewController: OptionsAlertControler)
 }
 
 final class HomeInteractor {
@@ -138,8 +138,23 @@ final class HomeInteractor {
     func showActionForItem(at indexPath: IndexPath) {
         guard indexPath.section == 1 else { return }
         let model = state.launchModels[indexPath.row]
-        guard let url = URL(string: model.links.videoLink ?? "") else { return }
-        delegate?.interactor(self, wantsToShowWebsiteWithURL: url)
+
+        let optionsViewController = OptionsAlertControler(title: model.missionName, message: nil, preferredStyle: .actionSheet)
+        optionsViewController.delegate = self
+
+        if let url = URL(string: model.links.articleLink ?? "") {
+            optionsViewController.addAction(title: Localized.Options.article, url: url)
+        }
+
+        if let url = URL(string: model.links.wikipedia ?? "") {
+            optionsViewController.addAction(title: Localized.Options.wikipedia, url: url)
+        }
+
+        if let url = URL(string: model.links.videoLink ?? "") {
+            optionsViewController.addAction(title: Localized.Options.youtube, url: url)
+        }
+
+        delegate?.interactor(self, wantsToShowOptionsViewController: optionsViewController)
     }
 }
 
@@ -148,5 +163,11 @@ extension HomeInteractor: FiltersViewControllerDelegate {
         currentDataTask?.cancel()
         state.set(filters: filters)
         fetchLaunches(page: 0)
+    }
+}
+
+extension HomeInteractor: OptionsAlertControlerDelegate {
+    func alertController(_ alertController: OptionsAlertControler, wantsToShowWebsiteWithURL url: URL) {
+        delegate?.interactor(self, wantsToShowWebsiteWithURL: url)
     }
 }
