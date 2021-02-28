@@ -19,7 +19,11 @@ public enum NetworkError: Error {
 }
 
 public final class NetworkClient: NetworkClientProtocol {
-    public init() {}
+    public init(session: URLSession? = nil) {
+        if let session = session {
+            self.session = session
+        }
+    }
 
     public enum HTTPMethod: String{
         case GET
@@ -27,7 +31,7 @@ public final class NetworkClient: NetworkClientProtocol {
         case PUT
     }
 
-    private let session: URLSession = {
+    private(set) var session: URLSession = {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
         return session
@@ -43,7 +47,7 @@ public final class NetworkClient: NetworkClientProtocol {
 
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                DispatchQueue.main.sync { completion(.failure(error)) }
+                DispatchQueue.main.async { completion(.failure(error)) }
                 return
             }
 
@@ -55,11 +59,11 @@ public final class NetworkClient: NetworkClientProtocol {
                 let data = data,
                 let model = try? decoder.decode(T.self, from: data)
             else {
-                DispatchQueue.main.sync { completion(.failure(NetworkError.invalidData)) }
+                DispatchQueue.main.async { completion(.failure(NetworkError.invalidData)) }
                 return
             }
 
-            DispatchQueue.main.sync { completion(.success(model)) }
+            DispatchQueue.main.async { completion(.success(model)) }
         }
         task.resume()
         return task
