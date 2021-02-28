@@ -37,7 +37,7 @@ struct InfoLabelViewModelBuilder {
                 if date.compare(now) == .orderedAscending {
                     return Localized.InfoLabel.Title.daysSince
                 }
-                return Localized.InfoLabel.Title.daysSince
+                return Localized.InfoLabel.Title.daysFrom
             }()
             let value: String = {
                 let secondsInDay: Double = 86400
