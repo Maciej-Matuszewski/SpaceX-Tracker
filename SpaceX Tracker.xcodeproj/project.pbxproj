@@ -169,8 +169,7 @@
 				494ACED825EA869A00D31172 /* HomeViewModel.swift */,
 				494ACEE025EA877900D31172 /* HomeInteractor.swift */,
 				494ACEE525EA885400D31172 /* HomeViewModelBuilder.swift */,
-				49217BA725EBB12B00A99632 /* FiltersViewController.swift */,
-				49A14F6D25EC0D2A00E5FF64 /* Filters.swift */,
+				49A14F7725EC1EC700E5FF64 /* Filters */,
 				494ACEA325EA6F6600D31172 /* Cells */,
 			);
 			path = Home;
@@ -243,6 +242,15 @@
 				49217AFB25EBA78800A99632 /* NetworkRequest+URL.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		49A14F7725EC1EC700E5FF64 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				49217BA725EBB12B00A99632 /* FiltersViewController.swift */,
+				49A14F6D25EC0D2A00E5FF64 /* Filters.swift */,
+			);
+			path = Filters;
 			sourceTree = "<group>";
 		};
 		49DFE73E25EA5F6200DA495C = {
