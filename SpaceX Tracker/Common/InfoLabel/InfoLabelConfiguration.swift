@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum InfoLabelConfiguration {
+enum InfoLabelConfiguration: Equatable {
     case mission(name: String)
     case date(date: Date)
     case rocket(name: String, type: String)

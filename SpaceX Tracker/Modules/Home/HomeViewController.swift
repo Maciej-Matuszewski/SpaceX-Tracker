@@ -15,6 +15,12 @@ class HomeViewController: UIViewController {
     private let context: Context
     private let interactor: HomeInteractor
 
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlDidChanged(_:)), for: .valueChanged)
+        return refreshControl
+    }()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +34,7 @@ class HomeViewController: UIViewController {
         )
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = refreshControl
         return tableView
     }()
 
@@ -49,7 +56,7 @@ class HomeViewController: UIViewController {
         addComponents()
         layoutComponents()
         interactor.delegate = self
-        interactor.fetchData()
+        interactor.initialFetch()
         title = Localized.HomeViewController.title
     }
 
@@ -76,8 +83,12 @@ class HomeViewController: UIViewController {
         tableView.contentInset.bottom = view.safeAreaInsets.bottom
     }
 
-    @objc func filterButtonDidTap(_ sender: UIBarButtonItem) {
+    @objc private func filterButtonDidTap(_ sender: UIBarButtonItem) {
         interactor.showActionForFilterButton()
+    }
+
+    @objc private func refreshControlDidChanged(_ sender: UIRefreshControl) {
+        interactor.initialFetch()
     }
 }
 
@@ -176,9 +187,11 @@ extension HomeViewController: HomeInteractorDelegate {
             )
         )
         present(alertController, animated: true, completion: nil)
+        refreshControl.endRefreshing()
     }
 
     func interactor(_ interactor: HomeInteractor, didUpdateViewModel viewModel: HomeViewModel) {
         tableView.reloadData()
+        refreshControl.endRefreshing()
     }
 }

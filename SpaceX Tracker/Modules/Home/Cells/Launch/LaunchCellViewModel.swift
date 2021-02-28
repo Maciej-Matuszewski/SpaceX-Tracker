@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LaunchCellViewModel {
+struct LaunchCellViewModel: Equatable {
     enum StatusImage {
         case success
         case failed

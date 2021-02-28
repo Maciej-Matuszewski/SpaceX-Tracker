@@ -54,6 +54,16 @@ final class HomeInteractor {
             self.isFetching = false
             self.launchesError = error
         }
+
+        mutating func clear() {
+            companyInfoModel = nil
+            companyInfoError = nil
+            launchModels = []
+            launchesError = nil
+            currentPage = 0
+            isFetching = false
+            hasNextPage = true
+        }
     }
 
     private var state: State = .init(companyInfoModel: nil, launchModels: []) {
@@ -64,6 +74,7 @@ final class HomeInteractor {
 
     private (set) lazy var viewModel: HomeViewModel = HomeViewModelBuilder.build(with: state) {
         didSet {
+            guard oldValue != viewModel else { return }
             delegate?.interactor(self, didUpdateViewModel: viewModel)
         }
     }
@@ -73,7 +84,9 @@ final class HomeInteractor {
         self.context = context
     }
 
-    func fetchData() {
+    func initialFetch() {
+        currentDataTask?.cancel()
+        state.clear()
         fetchCompanyInfo()
         fetchLaunches(page: 0)
     }

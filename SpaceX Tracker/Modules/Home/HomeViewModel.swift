@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct HomeViewModel {
+struct HomeViewModel: Equatable {
     enum CellIdentifier: String {
         case companyInfo = "company_info_cell"
         case launch = "launch_cell"
     }
 
-    enum Item {
+    enum Item: Equatable {
         case companyInfo(viewModel: CompanyInfoCellViewModel)
         case launch(viewModel: LaunchCellViewModel)
 
@@ -25,13 +25,13 @@ struct HomeViewModel {
         }
     }
 
-    enum Footer {
+    enum Footer: Equatable {
         case loadingIndicator
         case emptyState(String)
         case none
     }
 
-    struct Section {
+    struct Section: Equatable {
         let headerTitle: String
         let items: [Item]
         let footer: Footer

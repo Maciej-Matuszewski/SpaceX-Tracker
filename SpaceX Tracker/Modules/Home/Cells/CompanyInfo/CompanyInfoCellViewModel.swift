@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct CompanyInfoCellViewModel {
+struct CompanyInfoCellViewModel: Equatable {
     let labelText: String
 }
