@@ -41,7 +41,7 @@ final class HomeInteractor {
         }
     }
 
-    private (set) var viewModel: HomeViewModel = HomeViewModelBuilder.initial() {
+    private (set) lazy var viewModel: HomeViewModel = HomeViewModelBuilder.build(with: state) {
         didSet {
             delegate?.interactor(self, didUpdateViewModel: viewModel)
         }

@@ -8,23 +8,6 @@
 import Foundation
 
 struct HomeViewModelBuilder {
-    static func initial() -> HomeViewModel {
-        .init(
-            sections: [
-                HomeViewModel.Section(
-                    headerTitle: Localized.HomeViewModelBuilder.Headers.company,
-                    items: [],
-                    isLoading: true
-                ),
-                HomeViewModel.Section(
-                    headerTitle: Localized.HomeViewModelBuilder.Headers.launches,
-                    items: [],
-                    isLoading: true
-                ),
-            ]
-        )
-    }
-
     static func build(with state: HomeInteractor.State) -> HomeViewModel {
         let companyInfoItem: HomeViewModel.Item? = {
             guard let model = state.companyInfoModel else { return nil }
