@@ -13,6 +13,7 @@
 		49217AA225EACE5B00A99632 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49217AA125EACE5B00A99632 /* AppContext.swift */; };
 		49217AEA25EAD74600A99632 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49217AEC25EAD74600A99632 /* Localizable.strings */; };
 		49217AF725EB9BD500A99632 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49217AF625EB9BD500A99632 /* String+Localizable.swift */; };
+		49217AFC25EBA78800A99632 /* NetworkRequest+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49217AFB25EBA78800A99632 /* NetworkRequest+URL.swift */; };
 		4949A89D25EA640100895A08 /* Style in Frameworks */ = {isa = PBXBuildFile; productRef = 4949A89C25EA640100895A08 /* Style */; };
 		4949A8AF25EA6BD000895A08 /* CompanyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949A8AE25EA6BD000895A08 /* CompanyInfoCell.swift */; };
 		494ACE9F25EA6EB100D31172 /* CompanyInfoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494ACE9E25EA6EB100D31172 /* CompanyInfoCellViewModel.swift */; };
@@ -61,6 +62,7 @@
 		49217AD325EAD61C00A99632 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49217AEB25EAD74600A99632 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		49217AF625EB9BD500A99632 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		49217AFB25EBA78800A99632 /* NetworkRequest+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkRequest+URL.swift"; sourceTree = "<group>"; };
 		4949A8AE25EA6BD000895A08 /* CompanyInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoCell.swift; sourceTree = "<group>"; };
 		494ACE9E25EA6EB100D31172 /* CompanyInfoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoCellViewModel.swift; sourceTree = "<group>"; };
 		494ACEB725EA6FC700D31172 /* LaunchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCell.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				49217A8025EAA50A00A99632 /* CompanyInfoRequest.swift */,
 				4972C1AE25EA9E7C00394DF1 /* LaunchesRequest.swift */,
+				49217AFB25EBA78800A99632 /* NetworkRequest+URL.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				494ACEC825EA81C900D31172 /* InfoLabelConfiguration.swift in Sources */,
 				49217AA225EACE5B00A99632 /* AppContext.swift in Sources */,
 				49217A8625EAA52600A99632 /* LaunchModel.swift in Sources */,
+				49217AFC25EBA78800A99632 /* NetworkRequest+URL.swift in Sources */,
 				494ACEE625EA885400D31172 /* HomeViewModelBuilder.swift in Sources */,
 				4972C1AF25EA9E7C00394DF1 /* LaunchesRequest.swift in Sources */,
 				49217A9425EAB6F200A99632 /* ImageDownloader.swift in Sources */,

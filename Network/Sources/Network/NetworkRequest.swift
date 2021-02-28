@@ -8,16 +8,13 @@
 import Foundation
 
 public protocol NetworkRequest {
+    var url: URL? { get }
     var path: String { get }
     var method: NetworkClient.HTTPMethod { get }
     var parameters: [String : String] { get }
 }
 
 extension NetworkRequest {
-    var url: URL? {
-        URL.init(string: "https://api.spacexdata.com/v3")
-    }
-
     var urlRequest: URLRequest? {
         guard let baseURL = url,
               var components = URLComponents(url: baseURL.appendingPathComponent(path), resolvingAgainstBaseURL: false) else { return nil }
