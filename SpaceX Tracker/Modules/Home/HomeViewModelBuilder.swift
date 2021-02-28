@@ -40,12 +40,12 @@ struct HomeViewModelBuilder {
                 HomeViewModel.Section(
                     headerTitle: Localized.HomeViewModelBuilder.Headers.company,
                     items: [companyInfoItem].compactMap({ $0 }),
-                    isLoading: state.companyInfoModel == nil
+                    footer: state.companyInfoModel == nil ? .loadingIndicator : .none
                 ),
                 HomeViewModel.Section(
                     headerTitle: Localized.HomeViewModelBuilder.Headers.launches,
                     items: launchItems,
-                    isLoading: state.hasNextPage
+                    footer: state.hasNextPage ? .loadingIndicator : state.launchModels.isEmpty ? .emptyState("There is no record of launches for provided filters.") : .none
                 ),
             ]
         )

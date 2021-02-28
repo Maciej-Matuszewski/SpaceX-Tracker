@@ -25,10 +25,16 @@ struct HomeViewModel {
         }
     }
 
+    enum Footer {
+        case loadingIndicator
+        case emptyState(String)
+        case none
+    }
+
     struct Section {
         let headerTitle: String
         let items: [Item]
-        let isLoading: Bool
+        let footer: Footer
     }
 
     let sections: [Section]

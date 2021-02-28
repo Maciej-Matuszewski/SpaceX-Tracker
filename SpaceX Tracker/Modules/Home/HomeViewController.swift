@@ -55,6 +55,12 @@ class HomeViewController: UIViewController {
 
     private func addComponents() {
         view.addSubview(tableView)
+        navigationItem.rightBarButtonItem = .init(
+            image: UIImage(systemName: "line.horizontal.3.decrease.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(filterButtonDidTap(_:))
+        )
     }
 
     private func layoutComponents() {
@@ -68,6 +74,10 @@ class HomeViewController: UIViewController {
         )
 
         tableView.contentInset.bottom = view.safeAreaInsets.bottom
+    }
+
+    @objc func filterButtonDidTap(_ sender: UIBarButtonItem) {
+        interactor.showActionForFilterButton()
     }
 }
 
@@ -97,14 +107,28 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard interactor.viewModel.sections[section].isLoading else { return nil }
+        let contentView: UIView
+        switch interactor.viewModel.sections[section].footer {
+        case .loadingIndicator:
+            let activityIndicatorView = UIActivityIndicatorView(style: .medium)
+            activityIndicatorView.color = .style(.accent)
+            activityIndicatorView.startAnimating()
+            contentView = activityIndicatorView
+        case .emptyState(let text):
+            let label = UILabel()
+            label.numberOfLines = 0
+            label.text = text
+            label.textAlignment = .center
+            label.textColor = .style(.secondaryText)
+            label.font = .style(.footnote)
+            contentView = label
+        case .none: return nil
+        }
+
         let stackView = UIStackView()
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = .style(.l)
-        let activityIndicatorView = UIActivityIndicatorView(style: .medium)
-        activityIndicatorView.color = .style(.accent)
-        activityIndicatorView.startAnimating()
-        stackView.addArrangedSubview(activityIndicatorView)
+        stackView.addArrangedSubview(contentView)
         return stackView
     }
 }
@@ -126,9 +150,16 @@ extension HomeViewController: UITableViewDelegate {
 }
 
 extension HomeViewController: HomeInteractorDelegate {
+    func interactor(_ interactor: HomeInteractor, wantsToShowFiltersViewController filtersViewController: FiltersViewController) {
+        present(filtersViewController, animated: true, completion: nil)
+    }
+
+    func interactor(_ interactor: HomeInteractor, wantsToShowAlert alertBuilder: AlertBuilder) {
+        present(alertBuilder.make(), animated: true, completion: nil)
+    }
+
     func interactor(_ interactor: HomeInteractor, wantsToShowWebsiteWithURL url: URL) {
-        let safariViewController = SFSafariViewController(url: url)
-        present(safariViewController, animated: true, completion: nil)
+        present(SFSafariViewController(url: url), animated: true, completion: nil)
     }
 
     func interactor(_ interactor: HomeInteractor, wantsToShowError error: Error) {

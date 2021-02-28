@@ -12,12 +12,16 @@ protocol HomeInteractorDelegate: class {
     func interactor(_ interactor: HomeInteractor, didUpdateViewModel viewModel: HomeViewModel)
     func interactor(_ interactor: HomeInteractor, wantsToShowError error: Error)
     func interactor(_ interactor: HomeInteractor, wantsToShowWebsiteWithURL url: URL)
+    func interactor(_ interactor: HomeInteractor, wantsToShowAlert alertBuilder: AlertBuilder)
+    func interactor(_ interactor: HomeInteractor, wantsToShowFiltersViewController filtersViewController: FiltersViewController)
 }
 
 final class HomeInteractor {
     typealias Context = NetworkClientProvider
 
     private let context: Context
+    weak var delegate: HomeInteractorDelegate?
+    private var currentDataTask: URLSessionTask?
 
     struct State {
         var companyInfoModel: CompanyInfoModel?
@@ -25,6 +29,15 @@ final class HomeInteractor {
         var currentPage: Int = 0
         var isFetching: Bool = false
         var hasNextPage: Bool = true
+        var filters: Filters = .init(order: .ascending, status: .all, yearFrom: 2006, yearTo: Date.currentYear() + 2)
+
+        mutating func set(_ filters: Filters) {
+            self.filters = filters
+            launchModels.removeAll()
+            currentPage = 0
+            isFetching = false
+            hasNextPage = true
+        }
 
         mutating func update(launchModels: [LaunchModel], page: Int, hasNextPage: Bool) {
             if page == 0 { self.launchModels.removeAll()  }
@@ -47,7 +60,6 @@ final class HomeInteractor {
         }
     }
 
-    weak var delegate: HomeInteractorDelegate?
 
     init(context: Context) {
         self.context = context
@@ -77,7 +89,12 @@ final class HomeInteractor {
     private func fetchLaunches(page: Int) {
         guard !state.isFetching, state.hasNextPage else { return }
         state.isFetching = true
-        context.networkClient.send(request: LaunchesRequest(page: page)) { [weak self] (result: Result<[LaunchModel], Error>) in
+        currentDataTask = context.networkClient.send(
+            request: LaunchesRequest(
+                page: page,
+                filters: state.filters
+            )
+        ) { [weak self] (result: Result<[LaunchModel], Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let models):
@@ -88,10 +105,25 @@ final class HomeInteractor {
         }
     }
 
+    func showActionForFilterButton() {
+        let filtersViewController = FiltersViewController()
+        filtersViewController.delegate = self
+        filtersViewController.configure(with: state.filters)
+        delegate?.interactor(self, wantsToShowFiltersViewController: filtersViewController)
+    }
+
     func showActionForItem(at indexPath: IndexPath) {
         guard indexPath.section == 1 else { return }
         let model = state.launchModels[indexPath.row]
         guard let url = URL(string: model.links.videoLink ?? "") else { return }
         delegate?.interactor(self, wantsToShowWebsiteWithURL: url)
+    }
+}
+
+extension HomeInteractor: FiltersViewControllerDelegate {
+    func viewController(_ viewController: FiltersViewController, wantsToUpdateFilters filters: Filters) {
+        currentDataTask?.cancel()
+        state.set(filters)
+        fetchLaunches(page: 0)
     }
 }
