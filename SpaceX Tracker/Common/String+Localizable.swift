@@ -100,4 +100,9 @@ struct Localized {
         static let youtube = "OPTIONS_YOUTUBE".localized()
         static let cancel = "OPTIONS_CANCEL".localized()
     }
+
+    struct NetworkError {
+        static let invalidURL = "NETWORK_ERROR_INVALID_URL".localized()
+        static let invalidData = "NETWORK_ERROR_INVALID_DATA".localized()
+    }
 }

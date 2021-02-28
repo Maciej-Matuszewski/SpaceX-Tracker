@@ -13,13 +13,13 @@ public protocol NetworkClientProtocol {
     func send<T: Codable>(request: NetworkRequest, completion: @escaping (Result<T, Error>) -> Void) -> URLSessionDataTask?
 }
 
+public enum NetworkError: Error {
+    case invalidURL
+    case invalidData
+}
+
 public final class NetworkClient: NetworkClientProtocol {
     public init() {}
-
-    public enum NetworkError: Error {
-        case invalidURL
-        case invalidData
-    }
 
     public enum HTTPMethod: String{
         case GET

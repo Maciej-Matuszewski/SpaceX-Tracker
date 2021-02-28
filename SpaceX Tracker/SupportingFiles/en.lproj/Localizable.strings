@@ -43,3 +43,6 @@
 "OPTIONS_WIKIPEDIA" = "Wikipedia";
 "OPTIONS_YOUTUBE" = "YouTube";
 "OPTIONS_CANCEL" = "Cancel";
+
+"NETWORK_ERROR_INVALID_URL" = "Problem with internal settings has occured. Please contact with us!";
+"NETWORK_ERROR_INVALID_DATA" = "Problem with server data has occured. Please try again later.";

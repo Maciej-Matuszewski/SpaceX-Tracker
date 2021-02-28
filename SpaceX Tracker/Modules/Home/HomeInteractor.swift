@@ -26,7 +26,7 @@ final class HomeInteractor {
     struct State {
         private(set) var companyInfoModel: CompanyInfoModel?
         private(set) var companyInfoError: Error?
-        private(set) var launchModels: [LaunchModel]
+        private(set) var launchModels: [LaunchModel] = []
         private(set) var launchesError: Error?
         private(set) var currentPage: Int = 0
         var isFetching: Bool = false
@@ -66,7 +66,7 @@ final class HomeInteractor {
         }
     }
 
-    private var state: State = .init(companyInfoModel: nil, launchModels: []) {
+    private var state: State = .init() {
         didSet {
             viewModel = HomeViewModelBuilder.build(with: state)
         }
