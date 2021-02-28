@@ -65,5 +65,32 @@ struct Localized {
                 valuation
             )
         }
+        static let emptyStateLaunches = "HOME_VIEW_MODEL_BUILDER_EMPTY_STATE_LAUNCHES".localized()
+    }
+
+    struct FiltersViewController {
+        struct Headers {
+            static let order = "FILTERS_VIEW_CONTOLLER_HEADERS_ORDER".localized()
+            static let status = "FILTERS_VIEW_CONTOLLER_HEADERS_STATUS".localized()
+            static let launchYears = "FILTERS_VIEW_CONTOLLER_HEADERS_LAUNCH_YEARS".localized()
+        }
+
+        struct Buttons {
+            static let update = "FILTERS_VIEW_CONTOLLER_BUTTONS_UPDATE".localized()
+            static let cancel = "FILTERS_VIEW_CONTOLLER_BUTTONS_CANCEL".localized()
+        }
+    }
+
+    struct Filters {
+        struct Order {
+            static let ascending = "FILTERS_ORDER_ASCENDING".localized()
+            static let descending = "FILTERS_ORDER_DESCENDING".localized()
+        }
+
+        struct Status {
+            static let all = "FILTERS_STATUS_ALL".localized()
+            static let successful = "FILTERS_STATUS_SUCCESSFUL".localized()
+            static let unsuccessful = "FILTERS_STATUS_UNSUCESSFUL".localized()
+        }
     }
 }

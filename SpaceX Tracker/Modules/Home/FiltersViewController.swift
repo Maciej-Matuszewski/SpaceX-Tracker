@@ -35,7 +35,7 @@ final class FiltersViewController: UIViewController {
         return stackView
     }()
 
-    private let orderTitleLabel: UILabel = createLabel(with: "Order")
+    private let orderTitleLabel: UILabel = createLabel(with: Localized.FiltersViewController.Headers.order)
 
     private lazy var orderSegmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(
@@ -48,7 +48,7 @@ final class FiltersViewController: UIViewController {
         return segmentedControl
     }()
 
-    private let statusTitleLabel: UILabel = createLabel(with: "Status")
+    private let statusTitleLabel: UILabel = createLabel(with: Localized.FiltersViewController.Headers.status)
 
     private lazy var statusSegmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(
@@ -62,7 +62,7 @@ final class FiltersViewController: UIViewController {
         return segmentedControl
     }()
 
-    private let yearsTitleLabel: UILabel = createLabel(with: "Launch years")
+    private let yearsTitleLabel: UILabel = createLabel(with: Localized.FiltersViewController.Headers.launchYears)
 
     private lazy var yearsPickerView: UIPickerView = {
         let pickerView = UIPickerView()
@@ -83,7 +83,7 @@ final class FiltersViewController: UIViewController {
     private lazy var updateButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Update", for: .normal)
+        button.setTitle(Localized.FiltersViewController.Buttons.update, for: .normal)
         button.setTitleColor(.style(.accent), for: .normal)
         button.titleLabel?.font = .style(.button)
         button.addTarget(self, action: #selector(updateButtonDidTap(_:)), for: .touchUpInside)
@@ -93,7 +93,7 @@ final class FiltersViewController: UIViewController {
     private let cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Cancel", for: .normal)
+        button.setTitle(Localized.FiltersViewController.Buttons.cancel, for: .normal)
         button.setTitleColor(.style(.accent), for: .normal)
         button.titleLabel?.font = .style(.button)
         button.addTarget(self, action: #selector(cancelButtonDidTap(_:)), for: .touchUpInside)

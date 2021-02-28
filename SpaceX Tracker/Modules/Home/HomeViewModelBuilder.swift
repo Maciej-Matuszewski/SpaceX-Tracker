@@ -45,7 +45,11 @@ struct HomeViewModelBuilder {
                 HomeViewModel.Section(
                     headerTitle: Localized.HomeViewModelBuilder.Headers.launches,
                     items: launchItems,
-                    footer: state.hasNextPage ? .loadingIndicator : state.launchModels.isEmpty ? .emptyState("There is no record of launches for provided filters.") : .none
+                    footer: state.hasNextPage
+                        ? .loadingIndicator
+                        : state.launchModels.isEmpty
+                            ? .emptyState(Localized.HomeViewModelBuilder.emptyStateLaunches)
+                            : .none
                 ),
             ]
         )

@@ -23,3 +23,18 @@
 "HOME_VIEW_MODEL_BUILDER_HEADER_COMPANY" = "Company";
 "HOME_VIEW_MODEL_BUILDER_HEADER_LAUNCHES" = "Launches";
 "HOME_VIEW_MODEL_BUILDER_COMPANY_INFO" = "%@ was founded by %@ in %d. It has now %d employees, %d launch sites, and is valued at USD %.2f.";
+"HOME_VIEW_MODEL_BUILDER_EMPTY_STATE_LAUNCHES" = "There is no record of launches for provided filters.";
+
+"FILTERS_VIEW_CONTOLLER_HEADERS_ORDER" = "Order";
+"FILTERS_VIEW_CONTOLLER_HEADERS_STATUS" = "Status";
+"FILTERS_VIEW_CONTOLLER_HEADERS_LAUNCH_YEARS" = "Launch years";
+
+"FILTERS_VIEW_CONTOLLER_BUTTONS_UPDATE" = "Update";
+"FILTERS_VIEW_CONTOLLER_BUTTONS_CANCEL" = "Cancel";
+
+"FILTERS_ORDER_ASCENDING" = "Ascending";
+"FILTERS_ORDER_DESCENDING" = "Descending";
+
+"FILTERS_STATUS_ALL" = "All";
+"FILTERS_STATUS_SUCCESSFUL" = "Successful";
+"FILTERS_STATUS_UNSUCESSFUL" = "Unsuccessful";
