@@ -22,6 +22,18 @@ struct HomeViewModelBuilder {
             return .companyInfo(viewModel: .init(labelText: text))
         }()
 
+        let companyInfoFooter: HomeViewModel.Footer = {
+            if let error = state.companyInfoError {
+                return .emptyState(error.localizedDescription)
+            }
+
+            if state.companyInfoModel == nil {
+                return .loadingIndicator
+            }
+
+            return .none
+        }()
+
         let launchItems = state.launchModels.map { (model) -> HomeViewModel.Item in
             .launch(
                 viewModel: LaunchCellViewModel(
@@ -35,21 +47,33 @@ struct HomeViewModelBuilder {
             )
         }
 
+        let launchesFooter: HomeViewModel.Footer = {
+            if let error = state.launchesError {
+                return .emptyState(error.localizedDescription)
+            }
+
+            if state.hasNextPage {
+                return .loadingIndicator
+            }
+
+            if state.launchModels.isEmpty {
+                return .emptyState(Localized.HomeViewModelBuilder.emptyStateLaunches)
+            }
+
+            return .none
+        }()
+
         return .init(
             sections: [
                 HomeViewModel.Section(
                     headerTitle: Localized.HomeViewModelBuilder.Headers.company,
                     items: [companyInfoItem].compactMap({ $0 }),
-                    footer: state.companyInfoModel == nil ? .loadingIndicator : .none
+                    footer: companyInfoFooter
                 ),
                 HomeViewModel.Section(
                     headerTitle: Localized.HomeViewModelBuilder.Headers.launches,
                     items: launchItems,
-                    footer: state.hasNextPage
-                        ? .loadingIndicator
-                        : state.launchModels.isEmpty
-                            ? .emptyState(Localized.HomeViewModelBuilder.emptyStateLaunches)
-                            : .none
+                    footer: launchesFooter
                 ),
             ]
         )

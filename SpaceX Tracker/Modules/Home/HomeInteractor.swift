@@ -24,14 +24,16 @@ final class HomeInteractor {
     private var currentDataTask: URLSessionTask?
 
     struct State {
-        var companyInfoModel: CompanyInfoModel?
-        var launchModels: [LaunchModel]
-        var currentPage: Int = 0
+        private(set) var companyInfoModel: CompanyInfoModel?
+        private(set) var companyInfoError: Error?
+        private(set) var launchModels: [LaunchModel]
+        private(set) var launchesError: Error?
+        private(set) var currentPage: Int = 0
         var isFetching: Bool = false
-        var hasNextPage: Bool = true
-        var filters: Filters = .init(order: .ascending, status: .all, yearFrom: 2006, yearTo: Date.currentYear() + 2)
+        private(set) var hasNextPage: Bool = true
+        private(set) var filters: Filters = .init(order: .ascending, status: .all, yearFrom: 2006, yearTo: Date.currentYear() + 2)
 
-        mutating func set(_ filters: Filters) {
+        mutating func set(filters: Filters) {
             self.filters = filters
             launchModels.removeAll()
             currentPage = 0
@@ -39,12 +41,18 @@ final class HomeInteractor {
             hasNextPage = true
         }
 
-        mutating func update(launchModels: [LaunchModel], page: Int, hasNextPage: Bool) {
+        mutating func set(companyInfoModel: CompanyInfoModel?, error: Error? = nil) {
+            self.companyInfoModel = companyInfoModel ?? self.companyInfoModel
+            self.companyInfoError = error
+        }
+
+        mutating func set(launchModels: [LaunchModel], page: Int, hasNextPage: Bool, error: Error? = nil) {
             if page == 0 { self.launchModels.removeAll()  }
             self.launchModels.append(contentsOf: launchModels)
             self.currentPage = page
             self.hasNextPage = hasNextPage
             self.isFetching = false
+            self.launchesError = error
         }
     }
 
@@ -79,8 +87,9 @@ final class HomeInteractor {
             guard let self = self else { return }
             switch result {
             case .success(let model):
-                self.state.companyInfoModel = model
+                self.state.set(companyInfoModel: model)
             case .failure(let error):
+                self.state.set(companyInfoModel: nil, error: error)
                 self.delegate?.interactor(self, wantsToShowError: error)
             }
         }
@@ -98,8 +107,9 @@ final class HomeInteractor {
             guard let self = self else { return }
             switch result {
             case .success(let models):
-                self.state.update(launchModels: models, page: page, hasNextPage: !models.isEmpty)
+                self.state.set(launchModels: models, page: page, hasNextPage: !models.isEmpty)
             case .failure(let error):
+                self.state.set(launchModels: [], page: page, hasNextPage: false, error: error)
                 self.delegate?.interactor(self, wantsToShowError: error)
             }
         }
@@ -123,7 +133,7 @@ final class HomeInteractor {
 extension HomeInteractor: FiltersViewControllerDelegate {
     func viewController(_ viewController: FiltersViewController, wantsToUpdateFilters filters: Filters) {
         currentDataTask?.cancel()
-        state.set(filters)
+        state.set(filters: filters)
         fetchLaunches(page: 0)
     }
 }
