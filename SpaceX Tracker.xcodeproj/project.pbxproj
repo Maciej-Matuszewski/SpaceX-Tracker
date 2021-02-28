@@ -40,19 +40,10 @@
 		49DFE74F25EA5F6200DA495C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74E25EA5F6200DA495C /* HomeViewController.swift */; };
 		49DFE75425EA5F6300DA495C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49DFE75325EA5F6300DA495C /* Assets.xcassets */; };
 		49DFE75725EA5F6300DA495C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49DFE75525EA5F6300DA495C /* LaunchScreen.storyboard */; };
-		49DFE76225EA5F6300DA495C /* SpaceX_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE76125EA5F6300DA495C /* SpaceX_TrackerTests.swift */; };
-		49DFE76D25EA5F6300DA495C /* SpaceX_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE76C25EA5F6300DA495C /* SpaceX_TrackerUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		49DFE75E25EA5F6300DA495C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49DFE73F25EA5F6200DA495C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49DFE74625EA5F6200DA495C;
-			remoteInfo = "SpaceX Tracker";
-		};
-		49DFE76925EA5F6300DA495C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 49DFE73F25EA5F6200DA495C /* Project object */;
 			proxyType = 1;
@@ -96,11 +87,7 @@
 		49DFE75325EA5F6300DA495C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49DFE75825EA5F6300DA495C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49DFE75D25EA5F6300DA495C /* SpaceX TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SpaceX TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		49DFE76125EA5F6300DA495C /* SpaceX_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceX_TrackerTests.swift; sourceTree = "<group>"; };
 		49DFE76325EA5F6300DA495C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49DFE76825EA5F6300DA495C /* SpaceX TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SpaceX TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		49DFE76C25EA5F6300DA495C /* SpaceX_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceX_TrackerUITests.swift; sourceTree = "<group>"; };
-		49DFE76E25EA5F6300DA495C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,13 +101,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		49DFE75A25EA5F6300DA495C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49DFE76525EA5F6300DA495C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -271,7 +251,6 @@
 			children = (
 				49DFE74925EA5F6200DA495C /* SpaceX Tracker */,
 				49DFE76025EA5F6300DA495C /* SpaceX TrackerTests */,
-				49DFE76B25EA5F6300DA495C /* SpaceX TrackerUITests */,
 				49DFE74825EA5F6200DA495C /* Products */,
 				4949A89B25EA640100895A08 /* Frameworks */,
 			);
@@ -282,7 +261,6 @@
 			children = (
 				49DFE74725EA5F6200DA495C /* SpaceX Tracker.app */,
 				49DFE75D25EA5F6300DA495C /* SpaceX TrackerTests.xctest */,
-				49DFE76825EA5F6300DA495C /* SpaceX TrackerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -303,20 +281,10 @@
 		49DFE76025EA5F6300DA495C /* SpaceX TrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				49DFE76125EA5F6300DA495C /* SpaceX_TrackerTests.swift */,
 				494A57F925EC2C4A00AA5B3B /* HomeViewModelBuilderTests.swift */,
 				49DFE76325EA5F6300DA495C /* Info.plist */,
 			);
 			path = "SpaceX TrackerTests";
-			sourceTree = "<group>";
-		};
-		49DFE76B25EA5F6300DA495C /* SpaceX TrackerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				49DFE76C25EA5F6300DA495C /* SpaceX_TrackerUITests.swift */,
-				49DFE76E25EA5F6300DA495C /* Info.plist */,
-			);
-			path = "SpaceX TrackerUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,24 +329,6 @@
 			productReference = 49DFE75D25EA5F6300DA495C /* SpaceX TrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		49DFE76725EA5F6300DA495C /* SpaceX TrackerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49DFE77725EA5F6300DA495C /* Build configuration list for PBXNativeTarget "SpaceX TrackerUITests" */;
-			buildPhases = (
-				49DFE76425EA5F6300DA495C /* Sources */,
-				49DFE76525EA5F6300DA495C /* Frameworks */,
-				49DFE76625EA5F6300DA495C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				49DFE76A25EA5F6300DA495C /* PBXTargetDependency */,
-			);
-			name = "SpaceX TrackerUITests";
-			productName = "SpaceX TrackerUITests";
-			productReference = 49DFE76825EA5F6300DA495C /* SpaceX TrackerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -392,10 +342,6 @@
 						CreatedOnToolsVersion = 12.4;
 					};
 					49DFE75C25EA5F6300DA495C = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = 49DFE74625EA5F6200DA495C;
-					};
-					49DFE76725EA5F6300DA495C = {
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = 49DFE74625EA5F6200DA495C;
 					};
@@ -417,7 +363,6 @@
 			targets = (
 				49DFE74625EA5F6200DA495C /* SpaceX Tracker */,
 				49DFE75C25EA5F6300DA495C /* SpaceX TrackerTests */,
-				49DFE76725EA5F6300DA495C /* SpaceX TrackerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -434,13 +379,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		49DFE75B25EA5F6300DA495C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49DFE76625EA5F6300DA495C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -489,15 +427,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				494A57FA25EC2C4A00AA5B3B /* HomeViewModelBuilderTests.swift in Sources */,
-				49DFE76225EA5F6300DA495C /* SpaceX_TrackerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49DFE76425EA5F6300DA495C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49DFE76D25EA5F6300DA495C /* SpaceX_TrackerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,11 +437,6 @@
 			isa = PBXTargetDependency;
 			target = 49DFE74625EA5F6200DA495C /* SpaceX Tracker */;
 			targetProxy = 49DFE75E25EA5F6300DA495C /* PBXContainerItemProxy */;
-		};
-		49DFE76A25EA5F6300DA495C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49DFE74625EA5F6200DA495C /* SpaceX Tracker */;
-			targetProxy = 49DFE76925EA5F6300DA495C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -734,46 +658,6 @@
 			};
 			name = Release;
 		};
-		49DFE77825EA5F6300DA495C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TLA9984P8M;
-				INFOPLIST_FILE = "SpaceX TrackerUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "maciej-matuszewski.SpaceX-TrackerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "SpaceX Tracker";
-			};
-			name = Debug;
-		};
-		49DFE77925EA5F6300DA495C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TLA9984P8M;
-				INFOPLIST_FILE = "SpaceX TrackerUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "maciej-matuszewski.SpaceX-TrackerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "SpaceX Tracker";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -800,15 +684,6 @@
 			buildConfigurations = (
 				49DFE77525EA5F6300DA495C /* Debug */,
 				49DFE77625EA5F6300DA495C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		49DFE77725EA5F6300DA495C /* Build configuration list for PBXNativeTarget "SpaceX TrackerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49DFE77825EA5F6300DA495C /* Debug */,
-				49DFE77925EA5F6300DA495C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
