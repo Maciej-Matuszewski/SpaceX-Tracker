@@ -8,7 +8,7 @@
 import UIKit
 import Style
 
-final class InfoLabel: UIStackView {
+final class InfoLabel: AdaptiveStackView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -19,6 +19,7 @@ final class InfoLabel: UIStackView {
 
     let valueLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.font = .style(.body)
         label.textColor = .style(.primaryText)
         return label

@@ -39,6 +39,7 @@ final class LaunchCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
+        stackView.spacing = UIStackView.spacingUseSystem
         return stackView
     }()
 

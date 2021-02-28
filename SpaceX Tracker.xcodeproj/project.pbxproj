@@ -32,6 +32,7 @@
 		4972C1AF25EA9E7C00394DF1 /* LaunchesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972C1AE25EA9E7C00394DF1 /* LaunchesRequest.swift */; };
 		499D590D25EA98150005D3AF /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 499D590C25EA98150005D3AF /* Network */; };
 		49A14F6E25EC0D2A00E5FF64 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A14F6D25EC0D2A00E5FF64 /* Filters.swift */; };
+		49A14F7325EC0DE000E5FF64 /* AdaptiveStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A14F7225EC0DE000E5FF64 /* AdaptiveStackView.swift */; };
 		49DFE74B25EA5F6200DA495C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74A25EA5F6200DA495C /* AppDelegate.swift */; };
 		49DFE74D25EA5F6200DA495C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74C25EA5F6200DA495C /* SceneDelegate.swift */; };
 		49DFE74F25EA5F6200DA495C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFE74E25EA5F6200DA495C /* HomeViewController.swift */; };
@@ -83,6 +84,7 @@
 		4972C1A825EA9E4F00394DF1 /* CompanyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoModel.swift; sourceTree = "<group>"; };
 		4972C1AE25EA9E7C00394DF1 /* LaunchesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesRequest.swift; sourceTree = "<group>"; };
 		49A14F6D25EC0D2A00E5FF64 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		49A14F7225EC0DE000E5FF64 /* AdaptiveStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveStackView.swift; sourceTree = "<group>"; };
 		49DFE74725EA5F6200DA495C /* SpaceX Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceX Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49DFE74A25EA5F6200DA495C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49DFE74C25EA5F6200DA495C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				49217AF625EB9BD500A99632 /* String+Localizable.swift */,
 				49217BA225EBAFD600A99632 /* AlertBuilder.swift */,
 				49217BAC25EC074200A99632 /* Date+CurrentYear.swift */,
+				49A14F7225EC0DE000E5FF64 /* AdaptiveStackView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49DFE74F25EA5F6200DA495C /* HomeViewController.swift in Sources */,
+				49A14F7325EC0DE000E5FF64 /* AdaptiveStackView.swift in Sources */,
 				494ACED925EA869A00D31172 /* HomeViewModel.swift in Sources */,
 				494ACEC325EA818800D31172 /* InfoLabelViewModelBuilder.swift in Sources */,
 				494ACEE125EA877900D31172 /* HomeInteractor.swift in Sources */,
