@@ -65,15 +65,8 @@ final class LaunchCell: UITableViewCell {
 
     private func addComponents() {
         addSubview(rootStackView)
-
-        rootStackView.addArrangedSubview(missionImageView)
-        rootStackView.addArrangedSubview(labelsStackView)
-        rootStackView.addArrangedSubview(statusImageView)
-
-        labelsStackView.addArrangedSubview(missionLabel)
-        labelsStackView.addArrangedSubview(dateLabel)
-        labelsStackView.addArrangedSubview(rocketLabel)
-        labelsStackView.addArrangedSubview(daysSinceNowLabel)
+        rootStackView.addArrangedSubviews([missionImageView, labelsStackView, statusImageView])
+        labelsStackView.addArrangedSubviews([missionLabel, dateLabel, rocketLabel, daysSinceNowLabel])
     }
 
     private func layoutComponents() {
@@ -104,10 +97,10 @@ final class LaunchCell: UITableViewCell {
         }
 
         statusImageView.image = viewModel.statusImage.image
-        missionLabel.configure(with: viewModel.missionLabelConfiguration)
-        dateLabel.configure(with: viewModel.dateLabelConfiguration)
-        rocketLabel.configure(with: viewModel.rocketLabelConfiguration)
-        daysSinceNowLabel.configure(with: viewModel.daysSinceNowLabelConfiguration)
+        missionLabel.configure(with: viewModel.missionLabelViewModel)
+        dateLabel.configure(with: viewModel.dateLabelViewModel)
+        rocketLabel.configure(with: viewModel.rocketLabelViewModel)
+        daysSinceNowLabel.configure(with: viewModel.daysSinceNowLabelViewModel)
     }
 
     override func prepareForReuse() {

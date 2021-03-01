@@ -122,16 +122,17 @@ final class FiltersViewController: UIViewController {
         view.addSubview(cancelBlurView)
         cancelBlurView.contentView.addSubview(cancelButton)
 
-        rootStackView.addArrangedSubview(orderTitleLabel)
-        rootStackView.addArrangedSubview(orderSegmentedControl)
-
-        rootStackView.addArrangedSubview(statusTitleLabel)
-        rootStackView.addArrangedSubview(statusSegmentedControl)
-
-        rootStackView.addArrangedSubview(yearsTitleLabel)
-        rootStackView.addArrangedSubview(yearsPickerView)
-
-        rootStackView.addArrangedSubview(updateButton)
+        rootStackView.addArrangedSubviews(
+            [
+                orderTitleLabel,
+                orderSegmentedControl,
+                statusTitleLabel,
+                statusSegmentedControl,
+                yearsTitleLabel,
+                yearsPickerView,
+                updateButton
+            ]
+        )
     }
 
     private func layoutComponents() {
