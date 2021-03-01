@@ -8,7 +8,7 @@
 import UIKit
 
 class AdaptiveStackView: UIStackView {
-    @available(*, unavailable)
+    @available (*, unavailable, message: "AdaptiveStackView is handling axis by itself and setting new value is not allowed.")
     override var axis: NSLayoutConstraint.Axis {
         get {
             return super.axis
