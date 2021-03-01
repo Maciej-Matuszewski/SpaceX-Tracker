@@ -35,6 +35,8 @@
 		499DD05225EC3AAA00BD88C1 /* InfoLabelViewModelBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499DD05125EC3AAA00BD88C1 /* InfoLabelViewModelBuilderTests.swift */; };
 		499DD05C25EC3F5000BD88C1 /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499DD05B25EC3F5000BD88C1 /* HomeInteractorTests.swift */; };
 		499DD06425EC3F7900BD88C1 /* HomeInteractorDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499DD06325EC3F7900BD88C1 /* HomeInteractorDelegateMock.swift */; };
+		499DD07225EC6CF500BD88C1 /* UIStackView+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499DD07125EC6CF500BD88C1 /* UIStackView+Array.swift */; };
+		499DD07625EC723B00BD88C1 /* InfoLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499DD07525EC723B00BD88C1 /* InfoLabelViewModel.swift */; };
 		49A14F6E25EC0D2A00E5FF64 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A14F6D25EC0D2A00E5FF64 /* Filters.swift */; };
 		49A14F7325EC0DE000E5FF64 /* AdaptiveStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A14F7225EC0DE000E5FF64 /* AdaptiveStackView.swift */; };
 		49A14F8425EC1F4200E5FF64 /* OptionsAlertControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A14F8325EC1F4200E5FF64 /* OptionsAlertControler.swift */; };
@@ -83,6 +85,8 @@
 		499DD05125EC3AAA00BD88C1 /* InfoLabelViewModelBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLabelViewModelBuilderTests.swift; sourceTree = "<group>"; };
 		499DD05B25EC3F5000BD88C1 /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
 		499DD06325EC3F7900BD88C1 /* HomeInteractorDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorDelegateMock.swift; sourceTree = "<group>"; };
+		499DD07125EC6CF500BD88C1 /* UIStackView+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Array.swift"; sourceTree = "<group>"; };
+		499DD07525EC723B00BD88C1 /* InfoLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLabelViewModel.swift; sourceTree = "<group>"; };
 		49A14F6D25EC0D2A00E5FF64 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		49A14F7225EC0DE000E5FF64 /* AdaptiveStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveStackView.swift; sourceTree = "<group>"; };
 		49A14F8325EC1F4200E5FF64 /* OptionsAlertControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsAlertControler.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				49217AF625EB9BD500A99632 /* String+Localizable.swift */,
 				49217BAC25EC074200A99632 /* Date+CurrentYear.swift */,
 				49A14F7225EC0DE000E5FF64 /* AdaptiveStackView.swift */,
+				499DD07125EC6CF500BD88C1 /* UIStackView+Array.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				494ACEBD25EA742E00D31172 /* InfoLabel.swift */,
+				499DD07525EC723B00BD88C1 /* InfoLabelViewModel.swift */,
 				494ACEC725EA81C900D31172 /* InfoLabelConfiguration.swift */,
 				494ACEC225EA818800D31172 /* InfoLabelViewModelBuilder.swift */,
 			);
@@ -428,7 +434,9 @@
 				494ACEC825EA81C900D31172 /* InfoLabelConfiguration.swift in Sources */,
 				49217AA225EACE5B00A99632 /* AppContext.swift in Sources */,
 				49217A8625EAA52600A99632 /* LaunchModel.swift in Sources */,
+				499DD07225EC6CF500BD88C1 /* UIStackView+Array.swift in Sources */,
 				49217AFC25EBA78800A99632 /* NetworkError+LocalizedError.swift in Sources */,
+				499DD07625EC723B00BD88C1 /* InfoLabelViewModel.swift in Sources */,
 				494ACEE625EA885400D31172 /* HomeViewModelBuilder.swift in Sources */,
 				49217BA825EBB12B00A99632 /* FiltersViewController.swift in Sources */,
 				4972C1AF25EA9E7C00394DF1 /* LaunchesRequest.swift in Sources */,
