@@ -10,12 +10,24 @@ import Network
 @testable import SpaceX_Tracker
 
 class HomeViewModelBuilderTests: XCTestCase {
+    private var dateFormatter: DateFormatter!
+
+    override func setUp() {
+        super.setUp()
+        dateFormatter = .init()
+    }
+
+    override func tearDown() {
+        dateFormatter = nil
+        super.tearDown()
+    }
+
     func test_initialState() {
         // Given state
         let state: HomeInteractor.State = .fake()
 
         // When builder will prepare viewModel
-        let viewModel = HomeViewModelBuilder.build(with: state)
+        let viewModel = HomeViewModelBuilder.build(with: state, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.sections.count, 2)
@@ -43,7 +55,7 @@ class HomeViewModelBuilderTests: XCTestCase {
         )
 
         // When builder will prepare viewModel
-        let viewModel = HomeViewModelBuilder.build(with: state)
+        let viewModel = HomeViewModelBuilder.build(with: state, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.sections.count, 2)
@@ -70,7 +82,7 @@ class HomeViewModelBuilderTests: XCTestCase {
         )
 
         // When builder will prepare viewModel
-        let viewModel = HomeViewModelBuilder.build(with: state)
+        let viewModel = HomeViewModelBuilder.build(with: state, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.sections.count, 2)
@@ -105,7 +117,7 @@ class HomeViewModelBuilderTests: XCTestCase {
         )
 
         // When builder will prepare viewModel
-        let viewModel = HomeViewModelBuilder.build(with: state)
+        let viewModel = HomeViewModelBuilder.build(with: state, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.sections.count, 2)
@@ -118,25 +130,25 @@ class HomeViewModelBuilderTests: XCTestCase {
             return XCTFail("Incorect type of item")
         }
 
-        XCTAssertEqual(cellViewModel0.missionLabelConfiguration, .mission(name: "mission_1"))
-        XCTAssertEqual(cellViewModel0.dateLabelConfiguration, .date(date: .distantPast))
-        XCTAssertEqual(cellViewModel0.rocketLabelConfiguration, .rocket(name: "rocket_name", type: "rocket_type"))
-        XCTAssertEqual(cellViewModel0.daysSinceNowLabelConfiguration, .daysSinceNow(date: .distantPast))
+        XCTAssertEqual(cellViewModel0.missionLabelViewModel, build(.mission(name: "mission_1")))
+        XCTAssertEqual(cellViewModel0.dateLabelViewModel, build(.date(date: .distantPast)))
+        XCTAssertEqual(cellViewModel0.rocketLabelViewModel, build(.rocket(name: "rocket_name", type: "rocket_type")))
+        XCTAssertEqual(cellViewModel0.daysSinceNowLabelViewModel, build(.daysSinceNow(date: .distantPast)))
         XCTAssertEqual(cellViewModel0.statusImage, .success)
 
         guard case .launch(let cellViewModel1) = viewModel.sections.last?.items[1] else {
             return XCTFail("Incorect type of item")
         }
 
-        XCTAssertEqual(cellViewModel1.missionLabelConfiguration, .mission(name: "mission_2"))
+        XCTAssertEqual(cellViewModel1.missionLabelViewModel, build(.mission(name: "mission_2")))
         XCTAssertEqual(cellViewModel1.statusImage, .failed)
 
         guard case .launch(let cellViewModel2) = viewModel.sections.last?.items[2] else {
             return XCTFail("Incorect type of item")
         }
 
-        XCTAssertEqual(cellViewModel2.missionLabelConfiguration, .mission(name: "mission_3"))
-        XCTAssertEqual(cellViewModel2.dateLabelConfiguration, .date(date: .distantFuture))
+        XCTAssertEqual(cellViewModel2.missionLabelViewModel, build(.mission(name: "mission_3")))
+        XCTAssertEqual(cellViewModel2.dateLabelViewModel, build(.date(date: .distantFuture)))
         XCTAssertEqual(cellViewModel2.statusImage, .waiting)
     }
 
@@ -152,7 +164,7 @@ class HomeViewModelBuilderTests: XCTestCase {
         )
 
         // When builder will prepare viewModel
-        let viewModel = HomeViewModelBuilder.build(with: state)
+        let viewModel = HomeViewModelBuilder.build(with: state, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.sections.count, 2)
@@ -170,7 +182,7 @@ class HomeViewModelBuilderTests: XCTestCase {
         )
 
         // When builder will prepare viewModel
-        let viewModel = HomeViewModelBuilder.build(with: state)
+        let viewModel = HomeViewModelBuilder.build(with: state, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.sections.count, 2)
@@ -188,7 +200,7 @@ class HomeViewModelBuilderTests: XCTestCase {
         )
 
         // When builder will prepare viewModel
-        let viewModel = HomeViewModelBuilder.build(with: state)
+        let viewModel = HomeViewModelBuilder.build(with: state, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.sections.count, 2)
@@ -196,6 +208,10 @@ class HomeViewModelBuilderTests: XCTestCase {
         XCTAssertEqual(viewModel.sections.last?.items.count, 0)
         XCTAssertEqual(viewModel.sections.last?.headerTitle, "Launches")
         XCTAssertEqual(viewModel.sections.last?.footer, HomeViewModel.Footer.emptyState("Problem with server data has occured. Please try again later."))
+    }
+
+    private func build(_ infoLabelConfiguration: InfoLabelConfiguration) -> InfoLabelViewModel {
+        InfoLabelViewModelBuilder.build(with: infoLabelConfiguration, dateFormatter: dateFormatter)
     }
 }
 

@@ -9,12 +9,24 @@ import XCTest
 @testable import SpaceX_Tracker
 
 class InfoLabelViewModelBuilderTests: XCTestCase {
+    private var dateFormatter: DateFormatter!
+
+    override func setUp() {
+        super.setUp()
+        dateFormatter = .init()
+    }
+
+    override func tearDown() {
+        dateFormatter = nil
+        super.tearDown()
+    }
+
     func test_build_mission() {
         // Given configuration
         let configuration: InfoLabelConfiguration = .mission(name: "Mission name")
 
         // When builder will prepare viewModel
-        let viewModel = InfoLabelViewModelBuilder.build(with: configuration)
+        let viewModel = InfoLabelViewModelBuilder.build(with: configuration, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.title, "Mission:")
@@ -36,7 +48,7 @@ class InfoLabelViewModelBuilderTests: XCTestCase {
         let configuration: InfoLabelConfiguration = .date(date: try XCTUnwrap(components.date))
 
         // When builder will prepare viewModel
-        let viewModel = InfoLabelViewModelBuilder.build(with: configuration)
+        let viewModel = InfoLabelViewModelBuilder.build(with: configuration, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.title, "Date/Time:")
@@ -48,7 +60,7 @@ class InfoLabelViewModelBuilderTests: XCTestCase {
         let configuration: InfoLabelConfiguration = .rocket(name: "Rocket Name", type: "Rocket Type")
 
         // When builder will prepare viewModel
-        let viewModel = InfoLabelViewModelBuilder.build(with: configuration)
+        let viewModel = InfoLabelViewModelBuilder.build(with: configuration, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.title, "Rocket:")
@@ -62,7 +74,7 @@ class InfoLabelViewModelBuilderTests: XCTestCase {
         let configuration: InfoLabelConfiguration = .daysSinceNow(date: date)
 
         // When builder will prepare viewModel
-        let viewModel = InfoLabelViewModelBuilder.build(with: configuration)
+        let viewModel = InfoLabelViewModelBuilder.build(with: configuration, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.title, "Days since now:")
@@ -76,7 +88,7 @@ class InfoLabelViewModelBuilderTests: XCTestCase {
         let configuration: InfoLabelConfiguration = .daysSinceNow(date: date)
 
         // When builder will prepare viewModel
-        let viewModel = InfoLabelViewModelBuilder.build(with: configuration)
+        let viewModel = InfoLabelViewModelBuilder.build(with: configuration, dateFormatter: dateFormatter)
 
         // Then
         XCTAssertEqual(viewModel.title, "Days from now:")

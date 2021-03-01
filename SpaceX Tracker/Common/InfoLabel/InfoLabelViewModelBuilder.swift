@@ -8,28 +8,27 @@
 import Foundation
 
 struct InfoLabelViewModelBuilder {
-    static func build(with configuration: InfoLabelConfiguration) -> (title: String, value: String) {
+    static func build(with configuration: InfoLabelConfiguration, dateFormatter: DateFormatter) -> InfoLabelViewModel {
         switch configuration {
         case .mission(let name):
-            return (title: Localized.InfoLabel.Title.mission, value: name)
+            return .init(title: Localized.InfoLabel.Title.mission, value: name)
 
         case .date(let date):
-            let dateFormater = DateFormatter()
-            dateFormater.dateStyle = .medium
-            dateFormater.timeStyle = .none
-            let day = dateFormater.string(from: date)
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            let day = dateFormatter.string(from: date)
 
-            dateFormater.dateStyle = .none
-            dateFormater.timeStyle = .short
-            let time = dateFormater.string(from: date)
+            dateFormatter.dateStyle = .none
+            dateFormatter.timeStyle = .short
+            let time = dateFormatter.string(from: date)
 
-            return (
+            return .init(
                 title: Localized.InfoLabel.Title.date,
                 value: Localized.InfoLabel.Value.date(day: day, time: time)
             )
 
         case .rocket(let name, let type):
-            return (title: Localized.InfoLabel.Title.rocket, value: "\(name)/\(type)")
+            return .init(title: Localized.InfoLabel.Title.rocket, value: "\(name)/\(type)")
 
         case .daysSinceNow(let date):
             let now = Date()
@@ -46,7 +45,7 @@ struct InfoLabelViewModelBuilder {
                 return "\(numberOfDays) \(numberOfDays == 1 ? Localized.InfoLabel.Value.day : Localized.InfoLabel.Value.days)"
             }()
 
-            return (title: title, value: value)
+            return .init(title: title, value: value)
         }
     }
 }

@@ -4,7 +4,6 @@
 //
 //  Created by Maciej Matuszewski on 27/02/2021.
 //
-
 import Foundation
 
 struct LaunchCellViewModel: Equatable {
@@ -16,8 +15,8 @@ struct LaunchCellViewModel: Equatable {
 
     let missionImageURL: String
     let statusImage: StatusImage
-    let missionLabelConfiguration: InfoLabelConfiguration
-    let dateLabelConfiguration: InfoLabelConfiguration
-    let rocketLabelConfiguration: InfoLabelConfiguration
-    let daysSinceNowLabelConfiguration: InfoLabelConfiguration
+    let missionLabelViewModel: InfoLabelViewModel
+    let dateLabelViewModel: InfoLabelViewModel
+    let rocketLabelViewModel: InfoLabelViewModel
+    let daysSinceNowLabelViewModel: InfoLabelViewModel
 }

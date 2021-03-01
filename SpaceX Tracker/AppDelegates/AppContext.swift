@@ -11,6 +11,7 @@ import Network
 struct AppContext {
     let networkClient: NetworkClientProtocol = NetworkClient()
     let imageDownloader: ImageDownloaderProtocol = ImageDownloader()
+    let dateFormatter: DateFormatter = DateFormatter()
 }
 
 protocol NetworkClientProvider {
@@ -22,4 +23,9 @@ protocol ImageDownloaderProvider {
     var imageDownloader: ImageDownloaderProtocol { get }
 }
 extension AppContext: ImageDownloaderProvider { }
+
+protocol DateFormatterProvider {
+    var dateFormatter: DateFormatter { get }
+}
+extension AppContext: DateFormatterProvider { }
 

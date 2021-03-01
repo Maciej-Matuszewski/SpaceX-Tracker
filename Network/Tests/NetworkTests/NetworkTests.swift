@@ -79,7 +79,7 @@ final class NetworkTests: XCTestCase {
 
         urlSession.json = json
 
-        let request = RequestMock(url: nil, path: "", method: .POST, parameters: [:])
+        let request = RequestMock(baseURL: nil, path: "", method: .POST, parameters: [:])
         let exp = expectation(description: "Waiting for response")
         networkClient.send(request: request) { (result: Result<ModelMock, Error>) in
             guard case .failure(let resultError) = result else {
@@ -143,7 +143,7 @@ final class NetworkTests: XCTestCase {
 }
 
 struct RequestMock: NetworkRequest {
-    var url = URL(string: "http://127.0.0.1")
+    var baseURL = URL(string: "http://127.0.0.1")
     var path: String = "path"
     var method: NetworkClient.HTTPMethod = .GET
     var parameters: [String : String] = [:]

@@ -10,8 +10,9 @@ import Network
 @testable import SpaceX_Tracker
 
 class HomeInteractorTests: XCTestCase {
-    struct Context: NetworkClientProvider {
+    struct Context: NetworkClientProvider & DateFormatterProvider {
         let networkClient: NetworkClientProtocol = NetworkClientMock()
+        let dateFormatter = DateFormatter()
     }
 
     private var mockDelegate: HomeInteractorDelegateMock!
