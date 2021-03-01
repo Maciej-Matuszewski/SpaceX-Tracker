@@ -9,15 +9,14 @@ import UIKit
 import Style
 
 final class InfoLabel: AdaptiveStackView {
-
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .style(.body)
         label.textColor = .style(.secondaryText)
         return label
     }()
 
-    let valueLabel: UILabel = {
+    private let valueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .style(.body)
@@ -50,13 +49,12 @@ final class InfoLabel: AdaptiveStackView {
         valueLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
 
-    public func configure(with configuration: InfoLabelConfiguration) {
-        let viewModel = InfoLabelViewModelBuilder.build(with: configuration)
+    func configure(with viewModel: InfoLabelViewModel) {
         titleLabel.text = viewModel.title
         valueLabel.text = viewModel.value
     }
 
-    public func prepareForReuse() {
+    func prepareForReuse() {
         titleLabel.text = nil
         valueLabel.text = nil
     }
