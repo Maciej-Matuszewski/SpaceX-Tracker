@@ -49,6 +49,9 @@ struct Filters {
         }
     }
 
+    static let minYear: Int = 2006
+    static let maxYear: Int = Date.currentYear() + 2
+
     var order: Order
     var status: Status
     var yearFrom: Int

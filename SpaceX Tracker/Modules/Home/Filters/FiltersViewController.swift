@@ -14,10 +14,8 @@ protocol FiltersViewControllerDelegate: class {
 
 final class FiltersViewController: UIViewController {
     weak var delegate: FiltersViewControllerDelegate?
-    private static let minYear: Int = 2006
-    private static let maxYear: Int = Date.currentYear() + 2
 
-    private var filters: Filters = .init(order: .ascending, status: .all, yearFrom: minYear, yearTo: maxYear)
+    private var filters: Filters = .init(order: .ascending, status: .all, yearFrom: Filters.minYear, yearTo: Filters.maxYear)
 
     private let blurView: UIVisualEffectView = {
         let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
@@ -70,7 +68,6 @@ final class FiltersViewController: UIViewController {
         pickerView.dataSource = self
         return pickerView
     }()
-
 
     private let cancelBlurView: UIVisualEffectView = {
         let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
@@ -136,6 +133,7 @@ final class FiltersViewController: UIViewController {
     }
 
     private func layoutComponents() {
+        let minimumCancelButtonHeight: CGFloat = 60
         NSLayoutConstraint.activate(
             [
                 blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .style(.l)),
@@ -150,13 +148,13 @@ final class FiltersViewController: UIViewController {
 
                 cancelBlurView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .style(.l)),
                 cancelBlurView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.style(.l)),
-                cancelBlurView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.style(.l)),
+                cancelBlurView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
                 cancelButton.topAnchor.constraint(equalTo: cancelBlurView.topAnchor),
                 cancelButton.leadingAnchor.constraint(equalTo: cancelBlurView.leadingAnchor),
                 cancelButton.trailingAnchor.constraint(equalTo: cancelBlurView.trailingAnchor),
                 cancelButton.bottomAnchor.constraint(equalTo: cancelBlurView.bottomAnchor),
-                cancelButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 60)
+                cancelButton.heightAnchor.constraint(greaterThanOrEqualToConstant: minimumCancelButtonHeight)
             ]
         )
 
@@ -178,8 +176,8 @@ final class FiltersViewController: UIViewController {
         orderSegmentedControl.selectedSegmentIndex = filters.order.index
         statusSegmentedControl.selectedSegmentIndex = filters.status.index
 
-        yearsPickerView.selectRow(filters.yearFrom - Self.minYear, inComponent: 0, animated: false)
-        yearsPickerView.selectRow(filters.yearTo - Self.minYear, inComponent: 1, animated: false)
+        yearsPickerView.selectRow(filters.yearFrom - Filters.minYear, inComponent: 0, animated: false)
+        yearsPickerView.selectRow(filters.yearTo - Filters.minYear, inComponent: 1, animated: false)
     }
 
     @objc private func orderSegmentedControlDidChangeValue(_ sender: UISegmentedControl) {
@@ -198,7 +196,6 @@ final class FiltersViewController: UIViewController {
     }
 
     @objc private func gestureRecognizerDidTap(_ sender: UITapGestureRecognizer) {
-        guard sender.view == view else { return }
         dismiss(animated: true)
     }
 
@@ -218,11 +215,11 @@ extension FiltersViewController: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        Self.maxYear - Self.minYear + 1
+        Filters.maxYear - Filters.minYear + 1
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        "\(Self.minYear + row)"
+        "\(Filters.minYear + row)"
     }
 }
 
@@ -233,13 +230,13 @@ extension FiltersViewController: UIPickerViewDelegate {
             if pickerView.selectedRow(inComponent: 1) < row {
                 pickerView.selectRow(row, inComponent: 1, animated: true)
             }
-            filters.yearFrom = row + Self.minYear
+            filters.yearFrom = row + Filters.minYear
 
         case 1:
             if pickerView.selectedRow(inComponent: 0) > row {
                 pickerView.selectRow(row, inComponent: 0, animated: true)
             }
-            filters.yearTo = row + Self.minYear
+            filters.yearTo = row + Filters.minYear
 
         default: break
         }

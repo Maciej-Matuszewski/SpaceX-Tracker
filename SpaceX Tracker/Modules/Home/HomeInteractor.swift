@@ -17,7 +17,7 @@ protocol HomeInteractorDelegate: class {
 }
 
 final class HomeInteractor {
-    typealias Context = NetworkClientProvider
+    typealias Context = NetworkClientProvider & DateFormatterProvider
 
     private let context: Context
     weak var delegate: HomeInteractorDelegate?
@@ -31,7 +31,7 @@ final class HomeInteractor {
         private(set) var currentPage: Int = 0
         var isFetching: Bool = false
         private(set) var hasNextPage: Bool = true
-        private(set) var filters: Filters = .init(order: .ascending, status: .all, yearFrom: 2006, yearTo: Date.currentYear() + 2)
+        private(set) var filters: Filters = .init(order: .ascending, status: .all, yearFrom: Filters.minYear, yearTo: Filters.maxYear)
 
         mutating func set(filters: Filters) {
             self.filters = filters
@@ -68,11 +68,11 @@ final class HomeInteractor {
 
     private var state: State = .init() {
         didSet {
-            viewModel = HomeViewModelBuilder.build(with: state)
+            viewModel = HomeViewModelBuilder.build(with: state, dateFormatter: context.dateFormatter)
         }
     }
 
-    private (set) lazy var viewModel: HomeViewModel = HomeViewModelBuilder.build(with: state) {
+    private (set) lazy var viewModel: HomeViewModel = HomeViewModelBuilder.build(with: state, dateFormatter: context.dateFormatter) {
         didSet {
             guard oldValue != viewModel else { return }
             delegate?.interactor(self, didUpdateViewModel: viewModel)
