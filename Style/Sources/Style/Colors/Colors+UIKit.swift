@@ -33,7 +33,7 @@ private extension Colors {
         // MARK: Dark Palette
         case (.primaryText, .dark, _): return UIColor(240, 235, 230)
         case (.secondaryText, .dark, _): return UIColor(190, 180, 175)
-        case (.accent, .dark, _): return UIColor(115, 5, 145)
+        case (.accent, .dark, _): return UIColor(165, 5, 215)
 
         case (.primaryBackground, .dark, _): return UIColor(0, 0, 0)
         case (.secondaryBackground, .dark, _): return UIColor(35, 35, 33)
