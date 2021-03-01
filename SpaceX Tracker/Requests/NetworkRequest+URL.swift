@@ -9,7 +9,7 @@ import Foundation
 import Network
 
 extension NetworkRequest {
-    var url: URL? {
+    var baseURL: URL? {
         URL.init(string: "https://api.spacexdata.com/v3")
     }
 }
