@@ -28,7 +28,8 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       language = "en-GB"
-      region = "GB">
+      region = "GB"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -44,10 +45,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "49DFE76725EA5F6300DA495C"
-               BuildableName = "SpaceX TrackerUITests.xctest"
-               BlueprintName = "SpaceX TrackerUITests"
-               ReferencedContainer = "container:SpaceX Tracker.xcodeproj">
+               BlueprintIdentifier = "NetworkTests"
+               BuildableName = "NetworkTests"
+               BlueprintName = "NetworkTests"
+               ReferencedContainer = "container:Network">
             </BuildableReference>
          </TestableReference>
       </Testables>
